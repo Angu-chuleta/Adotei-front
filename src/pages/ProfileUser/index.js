@@ -1,23 +1,26 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
-import {FiPower,FiTrash2} from 'react-icons/fi';
+import {FiTrash2} from 'react-icons/fi';
 import "./styles.css"
+import Cabecalho from '../Cabecalho';
 
 export default function ProfileUser(){
 
     return(
+        <div>
+            <Cabecalho/>
         <div className="profileUser-container">
             <header>
-                <span>Bem vindo, Abençoado</span>
-                <Link className="button" to="pet/new">Cadastrar novo caso</Link>
-                <button type="button">
-                    <FiPower size={18} color="#FFF"/>
-                </button> 
+                <span>Bem vindo, Usuário</span>
+                
+                <Link className="button" to="/new">Cadastrar novo caso</Link>
+
             </header>
 
             <h1>Casos cadastrados</h1>
             <ul>
                 <li>
+                    <strong>colocar foto lado Direito</strong>
                     <strong>Caso</strong>
                     <p>caso Teste</p>
                     <strong>Descricao</strong>
@@ -66,6 +69,7 @@ export default function ProfileUser(){
                 </li>
             </ul>
             
+        </div>
         </div>
     );
 }

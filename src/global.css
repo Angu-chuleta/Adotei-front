@@ -7,7 +7,7 @@
     box-sizing: border-box;
 }
 
-body{
+.body{
     font:400 14px Roboto, sans-serif;
     background: #FEFEFE;
     -webkit-font-smoothing:antialised;
@@ -27,7 +27,7 @@ form input{
     color: #333;
     border: 1px solid #dcdce6;
     border-radius: 8px;
-    padding: o 24px;
+    padding: 0 24px;
 }
 
 .button{
@@ -45,6 +45,7 @@ form input{
     font-size: 18px;
     line-height: 60px;
     transition: filter 0.2s;
+    
 
 }
 

@@ -1,0 +1,33 @@
+.cabecalho-container{
+    -ms-flex-item-align: baseline;
+    height: 50px;
+    width: 50px;
+    border-radius: 4px;
+    transition: border-color 0.2s;
+    margin-left: 93%;
+}
+
+.cabecalho-container header button{
+    
+    margin-top: -10px;
+    margin-left: 25%;
+    height: 40px;
+    width: 40px;
+    
+}
+
+.cabecalho-container header button:hover{
+    border-color: #999;
+    
+}
+
+
+
+/*.conteudo > .container {
+    padding: 1.5em;
+    background: #FFF;
+    box-shadow: 0 0 8px rgba(0,0,0,0.2);
+}*/
+
+
+

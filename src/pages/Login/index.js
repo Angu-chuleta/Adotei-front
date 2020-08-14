@@ -7,21 +7,27 @@ import {FiLogIn} from 'react-icons/fi'
 export default function Login(){
 
     return(
+
         <div className="login-container">
+            
             <section className="form">
                 <form>
-                    <h1>Faça seu login</h1>
+                    <h1>Login Adotei</h1>
                         <input placeholder="Login"></input>
                         <input placeholder="Senha" type="password"></input>
-                    <button className="button" type='submit'>Entrar</button>
+                        <Link  className="button" to="/adocao"> Entrar</Link>  
                         <Link  className=".back-link" to="/registeruser">
-                        <FiLogIn size={16} color="black"/> Não tenho Cadastro
+                        <Link  className="fa fa-facebook" to="/adocao"></Link>
+                        <Link  className="fa fa-google" to="/adocao"></Link>    
+                        <FiLogIn size={16} color="black"/> Cadastrar
                         </Link>
                     
                 </form>
             </section>
             
         </div>
+        
     );
 }
 //flex-direction: column;
+//<button className="button" type='submit'>Entrar</button>
