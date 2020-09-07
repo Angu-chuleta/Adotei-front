@@ -4,7 +4,6 @@ import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem'
 import {FiMenu} from 'react-icons/fi';
 import { Link } from 'react-router-dom';
-import BuscaPet from '../BuscaPet'
 import "./styles.css";
 
 //npm install @material-ui/core --save
@@ -25,7 +24,13 @@ export default function Cabecalho(){
   
     return (
       <div className="cabecalho-container">
-        <BuscaPet/>        
+          <div className = "form-Search">
+              <input type="text" 
+              placeholder="Buscar Animal..."
+              //onChange={<ResultadoBusca/>} colocar função de busca
+              />
+        
+         </div>
         <Button aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick}>
            <FiMenu size={40}/>
         </Button>

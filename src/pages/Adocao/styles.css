@@ -6,7 +6,7 @@
 .adocao-container{
     position: absolute;
     width: 790px;
-    height: 558.38px;
+    height: 500px;
     left: 335px;
     top: 80px;
     display: flex;
@@ -42,12 +42,12 @@
 .abaixo-retangulo-container{
     position: absolute;
     width: 790px;
-    height: 88.72px;
+    height: 80.72px;
     right: 315px;
     left: 0.1px;
     bottom: 63.12px;
     justify-content: center;
-    top: 470px;
+    top: 420px;
     background: rgba(0, 0, 0, 0.7);
     border-radius: 0px 0px 50px 50px
 }
