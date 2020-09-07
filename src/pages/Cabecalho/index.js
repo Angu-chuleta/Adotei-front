@@ -4,18 +4,11 @@ import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import { FiMenu } from 'react-icons/fi';
 import { Link } from 'react-router-dom';
-import BuscaPet from '../BuscaPet';
 import './styles.css';
 
 //npm install @material-ui/core --save
 
 export default function Cabecalho() {
-  const [anchorEl, setAnchorEl] = React.useState(null);
-
-  const handleClick = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
-
   const [anchorEl, setAnchorEl] = React.useState(null);
 
   const handleClick = (event) => {
@@ -29,11 +22,13 @@ export default function Cabecalho() {
   return (
     <div className="cabecalho-container">
       <div className="form-Search">
-        <input
-          type="text"
-          placeholder="Buscar Animal..."
-          //onChange={<ResultadoBusca/>} colocar função de busca
-        />
+        <form action="/buscapet">
+          <input
+            type="text"
+            placeholder="Buscar Animal..."
+            //onChange={<ResultadoBusca/>} colocar função de busca
+          />
+        </form>
       </div>
       <Button
         aria-controls="simple-menu"
@@ -52,8 +47,11 @@ export default function Cabecalho() {
         <MenuItem onClick={handleClose} component={Link} to="/adocao">
           Inicio
         </MenuItem>
+        <MenuItem onClick={handleClose} component={Link} to="/profileong">
+          Perfil Ong
+        </MenuItem>
         <MenuItem onClick={handleClose} component={Link} to="/profileuser">
-          Perfil
+          Perfil Usuario
         </MenuItem>
         <MenuItem onClick={handleClose} component={Link} to="/adocao">
           Animais

@@ -18,7 +18,7 @@ export default function Adocao(){
                 <div className="adocao-container">
                 <img src={viralataCaramel1} alt="Logo adotei"/>
                         <div className="topo-retangulo-container">
-                                <h1>{nome}</h1>
+                               <p> <h1>{nome}</h1></p>
                                 <h2>{raca}</h2>
                                 <h2>{idade}</h2>
                         </div>

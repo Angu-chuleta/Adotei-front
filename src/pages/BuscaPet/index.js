@@ -19,43 +19,55 @@ export default function BuscaPet() {
         <h1>Animais de {cidade}</h1>
         <ul>
           <li>
-            <img src={viralataCaramel1} alt="Logo adotei" />
-            <div className="busca-pet-topo-retangulo-container">
-              <h1>{nome}</h1>
-              <h2>{raca}</h2>
-              <h2>{idade}</h2>
-            </div>
-            <div className="busca-pet-baixo-retangulo-container"></div>
+            <Link to="/infoPet">
+              <img src={viralataCaramel1} alt="Logo adotei" />
+              
+              <div className="busca-pet-topo-retangulo-container">
+                <h1>{nome}</h1>
+                <h2>{raca}</h2>
+                <h2>{idade}</h2>
+              </div>
+              <div className="busca-pet-baixo-retangulo-container"></div>
+            </Link>
           </li>
 
           <li>
-            <img src={viralataCaramel1} alt="Logo adotei" />
-            <div className="busca-pet-topo-retangulo-container">
-              <h1>{nome}</h1>
-              <h2>{raca}</h2>
-              <h2>{idade}</h2>
-            </div>
-            <div className="busca-pet-baixo-retangulo-container"></div>
+            <Link to="/infoPet">
+              <img src={viralataCaramel1} alt="Logo adotei" />
+
+              <div className="busca-pet-topo-retangulo-container">
+                <h1>{nome}</h1>
+                <h2>{raca}</h2>
+                <h2>{idade}</h2>
+              </div>
+              <div className="busca-pet-baixo-retangulo-container"></div>
+            </Link>
           </li>
 
           <li>
-            <img src={viralataCaramel1} alt="Logo adotei" />
-            <div className="busca-pet-topo-retangulo-container">
-              <h1>{nome}</h1>
-              <h2>{raca}</h2>
-              <h2>{idade}</h2>
-            </div>
-            <div className="busca-pet-baixo-retangulo-container"></div>
+            <Link to="/infoPet">
+              <img src={viralataCaramel1} alt="Logo adotei" />
+
+              <div className="busca-pet-topo-retangulo-container">
+                <h1>{nome}</h1>
+                <h2>{raca}</h2>
+                <h2>{idade}</h2>
+              </div>
+              <div className="busca-pet-baixo-retangulo-container"></div>
+            </Link>
           </li>
 
           <li>
-            <img src={viralataCaramel1} alt="Logo adotei" />
-            <div className="busca-pet-topo-retangulo-container">
-              <h1>{nome}</h1>
-              <h2>{raca}</h2>
-              <h2>{idade}</h2>
-            </div>
-            <div className="busca-pet-baixo-retangulo-container"></div>
+            <Link to="/infoPet">
+              <img src={viralataCaramel1} alt="Logo adotei" />
+
+              <div className="busca-pet-topo-retangulo-container">
+                <h1>{nome}</h1>
+                <h2>{raca}</h2>
+                <h2>{idade}</h2>
+              </div>
+              <div className="busca-pet-baixo-retangulo-container"></div>
+            </Link>
           </li>
         </ul>
       </div>
