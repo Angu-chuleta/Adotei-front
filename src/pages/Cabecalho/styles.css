@@ -7,12 +7,13 @@
     margin-left: 93%;
 }
 
-.cabecalho-container header button{
+.cabecalho-container button{
     
-    margin-top: -10px;
+    margin-top: -50px;
     margin-left: 25%;
     height: 40px;
     width: 40px;
+    
     
 }
 
@@ -21,6 +22,19 @@
     
 }
 
+
+.form-Search form{
+    padding: 5px;
+    margin-left: -1300%;
+    margin-top: 5px;
+    margin-right: 400px;
+    margin-bottom: -20px;
+    
+    
+    
+    
+
+}
 
 
 /*.conteudo > .container {

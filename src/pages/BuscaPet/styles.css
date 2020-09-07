@@ -1,49 +1,120 @@
-.busca-container{
-    position: absolute;
-    width: 500px;
-    height: 500px;
-    left: 500px;
-    top: 80px; 
-    height: 80vh;
-    margin: 0 auto; 
-     
-    background-color: #f0f0f5;
+.busca-pet-container{
+    width: 100%;
+    max-width: 1400px;
+    padding: 30px;
+    margin: 32px auto;
+    
+    
+
+}
+
+.busca-pet-container header{
     display: flex;
     align-items: center;
+}
+
+.busca-pet-container header span{
+    font-size: 10px;
+    margin-left: 14px;
+    
+}
+
+.busca-pet-container header img{
+    height: 64px;
+}
+
+.busca-pet-container header a{
+    width: 260px;
+    margin-left: auto;
+    margin-top: 0;
+}
+
+
+.busca-pet-container header button:hover{
+    border-color: #999;
+    
+}
+
+.busca-pet-container h1{
+    font-size: 25px;
+    margin-top: 2px;
+    margin-bottom: 24px;
+}
+
+.busca-pet-container ul{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    grid-gap: 20px;
+    list-style: none;
+    
+    
+}
+
+.busca-pet-container ul li{
+    
+    padding: 24px;
+    border-radius: 8px;
+    position: relative;
+
+}
+
+.busca-pet-container ul li button{
+    position: absolute;
+    right: 24px;
+    top:24px;
+    border: 0;
+}
+.busca-pet-container ul li button:hover{
+    opacity: 80%;
+}
+
+
+img {
+    border: 1px solid black;
+    width: 100%;
+    border-radius: 50px 50px 50px 50px
+}
+
+
+.busca-pet-topo-retangulo-container{
+
+    width: 92.5%;
+    max-width: 1180px;
+    padding: 2px;
+    margin: 25px auto;
+    position: absolute;
+    height: 110px;
+    left: 25px;
     justify-content: center;
-    border-radius: 10px 10px 10px 10px;
-    /*
-      width: 450px;
-      left: 495px;
-      height: 80vh;
-      margin: 0 auto;
-     
-  
-  */
-  }
-  
-  .busca-container section.form{
-      width: 100%;
-      max-width: 350px;
-      margin-right: 30px;
-      
-      
-  }
-  
-  
-  .busca-container section.form form{
-      margin-top: 100px;
-      
-  }
-  
-  .busca-container section.form form h1{
-      font-size: 32px;
-      margin-bottom: 32px;
-      text-align: center;
-  }
-  
-  .busca-container section.form form input{
-      margin-top: 8px ;
-      
-  }
-  
+    top: 0px;
+    background: rgba(0, 0, 0, 0.7);
+    border-radius: 50px 50px 0px 0px
+    
+}
+
+.busca-pet-topo-retangulo-container h1{
+    color: aliceblue;
+    text-align: center;
+    
+}
+.busca-pet-topo-retangulo-container h2{
+    font-size: 20px;
+    color: aliceblue;
+    text-indent: 10px;
+    
+}
+
+.busca-pet-baixo-retangulo-container{
+    
+    width: 92.5%;
+    max-width: 1180px;
+    padding: 2px;
+    margin: 25px auto;
+    position: absolute;
+    height: 100px;
+    left: 25px;
+    justify-content: center;
+    top: 291px;
+    background: rgba(0, 0, 0, 0.7);
+    border-radius: 0px 0px 50px 50px
+}
