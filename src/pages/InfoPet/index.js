@@ -11,7 +11,7 @@ import virlata3 from "../../assets/imagens/virlata3.jpg"
 export default function InfoPet(){
 
  return(
-    <div>
+    <div className="sliderimg">
     <Cabecalho/>
         <div>
             <AliceCarousel autoPlay autoPlayInterval="3000">

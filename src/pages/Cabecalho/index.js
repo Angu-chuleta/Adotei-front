@@ -26,7 +26,11 @@ export default function Cabecalho(){
       <div className="cabecalho-container">
 
 
-        
+      <header>
+      <button  className="button" type="button">
+                      <a href="/adocao">
+                      <FiHome size={20} color="#FFF"/></a>
+          </button> 
         <Button aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick}>
            <FiMenu size={40}/>
         </Button>
@@ -41,10 +45,8 @@ export default function Cabecalho(){
           <MenuItem onClick={handleClose} component={Link} to="/adocao">Animais</MenuItem>
           <MenuItem onClick={handleClose} component={Link} to="/">Sair</MenuItem>
         </Menu>
-        <header>
-          <button  className="button" type="button">
-                      <FiHome size={20} color="#FFF"/>
-          </button> 
+
+
         </header>
       </div>
     );
