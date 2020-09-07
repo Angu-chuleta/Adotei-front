@@ -16,6 +16,12 @@ export default function Cabecalho() {
     setAnchorEl(event.currentTarget);
   };
 
+  const [anchorEl, setAnchorEl] = React.useState(null);
+
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
   const handleClose = () => {
     setAnchorEl(null);
   };

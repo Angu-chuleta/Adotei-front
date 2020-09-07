@@ -14,47 +14,47 @@ export default function BuscaPet() {
   return (
     <div>
       <Cabecalho />
-      <div className="profileUser-container">
+      <div className="busca-pet-container">
         <h1>Animais de {cidade}</h1>
         <ul>
           <li>
-            <strong>{nome}</strong>
-            <p>caso Teste</p>
-            <strong>{idade}</strong>
-            <p>Descricao Teste</p>
-            <strong>{raca}</strong>
-            <strong>{cidade}</strong>
-            <p>(27)4091-9240</p>
+            <img src={viralataCaramel1} alt="Logo adotei" />
+            <div className="busca-pet-topo-retangulo-container">
+              <h1>{nome}</h1>
+              <h2>{raca}</h2>
+              <h2>{idade}</h2>
+            </div>
+            <div className="busca-pet-baixo-retangulo-container"></div>
           </li>
 
           <li>
-            <strong>{nome}</strong>
-            <p>caso Teste</p>
-            <strong>{idade}</strong>
-            <p>Descricao Teste</p>
-            <strong>{raca}</strong>
-            <strong>{cidade}</strong>
-            <p>(27)4091-9240</p>
+            <img src={viralataCaramel1} alt="Logo adotei" />
+            <div className="busca-pet-topo-retangulo-container">
+              <h1>{nome}</h1>
+              <h2>{raca}</h2>
+              <h2>{idade}</h2>
+            </div>
+            <div className="busca-pet-baixo-retangulo-container"></div>
           </li>
 
           <li>
-            <strong>{nome}</strong>
-            <p>caso Teste</p>
-            <strong>{idade}</strong>
-            <p>Descricao Teste</p>
-            <strong>{raca}</strong>
-            <strong>{cidade}</strong>
-            <p>(27)4091-9240</p>
+            <img src={viralataCaramel1} alt="Logo adotei" />
+            <div className="busca-pet-topo-retangulo-container">
+              <h1>{nome}</h1>
+              <h2>{raca}</h2>
+              <h2>{idade}</h2>
+            </div>
+            <div className="busca-pet-baixo-retangulo-container"></div>
           </li>
 
           <li>
-            <strong>{nome}</strong>
-            <p>caso Teste</p>
-            <strong>{idade}</strong>
-            <p>Descricao Teste</p>
-            <strong>{raca}</strong>
-            <strong>{cidade}</strong>
-            <p>(27)4091-9240</p>
+            <img src={viralataCaramel1} alt="Logo adotei" />
+            <div className="busca-pet-topo-retangulo-container">
+              <h1>{nome}</h1>
+              <h2>{raca}</h2>
+              <h2>{idade}</h2>
+            </div>
+            <div className="busca-pet-baixo-retangulo-container"></div>
           </li>
         </ul>
       </div>
