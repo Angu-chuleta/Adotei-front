@@ -1,7 +1,8 @@
 import React from 'react';
-import { FiLogIn } from 'react-icons/fi';
 import './styles.css';
-import { Icon } from '@material-ui/core';
+import Cabecalho from '../Cabecalho';
+import { Link } from 'react-router-dom';
+import viralataCaramel1 from '../../assets/imagens/viralataCaramel1.jpg';
 
 //npm install @material-ui/core --save
 

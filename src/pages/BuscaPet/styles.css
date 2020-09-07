@@ -1,6 +1,6 @@
 .busca-pet-container {
   width: 100%;
-  max-width: (1180) px;
+  max-width: 1400px;
   padding: 30px;
   margin: 32px auto;
 }
@@ -43,7 +43,6 @@
 }
 
 .busca-pet-container ul li {
-  background: #f0f2f5;
   padding: 24px;
   border-radius: 8px;
   position: relative;

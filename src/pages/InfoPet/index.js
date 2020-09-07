@@ -15,7 +15,7 @@ export default function InfoPet(){
     <div className="sliderimg">
     <Cabecalho/>
         <div>
-            <AliceCarousel autoPlay autoPlayInterval="3000">
+            <AliceCarousel autoPlay autoPlayInterval="3500">
                 <img src={viralataCaramel1} alt="Logo adotei"/>
                 <img src={viralataamarelo2} alt="Logo adotei"/>
                 <img src={virlata3} alt="Logo adotei"/>
