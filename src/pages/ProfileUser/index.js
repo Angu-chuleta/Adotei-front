@@ -1,75 +1,70 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
-import {FiTrash2} from 'react-icons/fi';
 import "./styles.css"
 import Cabecalho from '../Cabecalho';
+import { FaHandHoldingHeart } from 'react-icons/fa';
 
 export default function ProfileUser(){
 
-    return(
-        <div>
-            <Cabecalho/>
-        <div className="profileUser-container">
-            <header>
-                <span>Bem vindo, Usuário</span>
-                
-                <Link className="button" to="/new">Cadastrar novo caso</Link>
+  return(
+    <div>
+      <Cabecalho/>
 
-            </header>
+      <h1 className="msgh1">Minha Conta</h1>
+      <h2 className="msgh2h2">Ewerson Magias da Silva Lanche</h2>
+      <h3>
+        Saldo: <FaHandHoldingHeart /> 100
+      </h3>
+      <div className="profile-container">
+        <button>Adicionar Petcoin</button>
+      </div>
 
-            <h1>Casos cadastrados</h1>
-            <ul>
-                <li>
-                    <strong>colocar foto lado Direito</strong>
-                    <strong>Caso</strong>
-                    <p>caso Teste</p>
-                    <strong>Descricao</strong>
-                    <p>Descricao Teste</p>
-                    <strong>Contato</strong>
-                    <p>(27)4091-9240</p>
-                    <button type="button">
-                        <FiTrash2 size={20} color="#a8a8b3"/>
-                    </button>
-                </li>
-
-                <li>
-                    <strong>Caso</strong>
-                    <p>caso Teste</p>
-                    <strong>Descricao</strong>
-                    <p>Descricao Teste</p>
-                    <strong>Contato</strong>
-                    <p>(27)4091-9240</p>
-                    <button type="button">
-                        <FiTrash2 size={20} color="#a8a8b3"/>
-                    </button>
-                </li>
-
-                <li>
-                    <strong>Caso</strong>
-                    <p>caso Teste</p>
-                    <strong>Descricao</strong>
-                    <p>Descricao Teste</p>
-                    <strong>Contato</strong>
-                    <p>(27)4091-9240</p>
-                    <button type="button">
-                        <FiTrash2 size={20} color="#a8a8b3"/>
-                    </button>
-                </li>
-                
-                <li>
-                    <strong>Caso</strong>
-                    <p>caso Teste</p>
-                    <strong>Descricao</strong>
-                    <p>Descricao Teste</p>
-                    <strong>Contato</strong>
-                    <p>(27)4091-9240</p>
-                    <button type="button">
-                        <FiTrash2 size={20} color="#a8a8b3"/>
-                    </button>
-                </li>
-            </ul>
-            
-        </div>
-        </div>
-    );
+      <div className="doacoes-container">
+        <h1>Minhas doações</h1>
+      </div>
+      <table className="table-container">
+        <tr>
+          <th>Instituição</th>
+          <th>Data</th>
+          <th>Petcoin</th>
+          <th>Pet</th>
+        </tr>
+        <tr>
+          <td>Auaufanato</td>
+          <td>04/03/2020</td>
+          <td>20</td>
+          <td>Caramelin</td>
+        </tr>
+        <tr>
+          <td>Auaufanato</td>
+          <td>20/04/2020</td>
+          <td>30</td>
+          <td>Caramelin</td>
+        </tr>
+        <tr>
+          <td>Auaufanato</td>
+          <td>13/05/2020</td>
+          <td>5</td>
+          <td>Caramelin</td>
+        </tr>
+        <tr>
+          <td>Auaufanato</td>
+          <td>17/12/2020</td>
+          <td>30</td>
+          <td>Caramelin</td>
+        </tr>
+        <tr>
+          <td>Auaufanato</td>
+          <td>02/01/2019</td>
+          <td>10</td>
+          <td>Leona</td>
+        </tr>
+        <tr>
+          <td>Auaufanato</td>
+          <td>01/01/2019</td>
+          <td>10</td>
+          <td>Leona</td>
+        </tr>
+      </table>
+    </div>
+  );
 }

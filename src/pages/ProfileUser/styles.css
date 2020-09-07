@@ -1,84 +1,85 @@
-.profileUser-container{
-    width: 100%;
-    max-width: 1180px;
-    padding: 0 30px;
-    margin: 32px auto;
-    
-    
-
+.table-container {
+  position: absolute;
+  width: 1400px;
+  height: 264px;
+  left: 20px;
+  top: 628px;
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
 }
 
-.profileUser-container header{
-    display: flex;
-    align-items: center;
+.msgh1 {
+  position: absolute;
+  width: 326px;
+  height: 56px;
+  left: 544px;
+  top: 118px;
+
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 48px;
+  line-height: 56px;
+
+  color: rgb(4, 4, 65);
 }
 
-.profileUser-container header span{
-    font-size: 20px;
-    margin-left: 24px;
+.msgh2h2 {
+  position: absolute;
+  width: 352px;
+  height: 28px;
+  left: 547px;
+  top: 250px;
+
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 28px;
+  text-align: center;
+
+  color: #859cb1;
+}
+h3 {
+  position: absolute;
+  width: 156px;
+  height: 28px;
+  left: 635px;
+  top: 300px;
+  color: rgb(4, 4, 65);
 }
 
-.profileUser-container header img{
-    height: 64px;
+.doacoes-container h1 {
+  position: absolute;
+  width: 222px;
+  height: 35px;
+  left: 609px;
+  top: 550px;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 30px;
+  line-height: 35px;
+  color: #2a3f54;
+}
+.profile-container button {
+  background-color: rgb(4, 4, 65);
+  color: #dddddd;
+  position: absolute;
+  width: 196px;
+  height: 50px;
+  left: 622px;
+  top: 350px;
+  border-radius: 10px 10px 10px 10px;
+}
+td,
+th {
+  border: 1px solid #dddddd;
+  text-align: center;
+  padding: 8px;
 }
 
-.profileUser-container header a{
-    width: 260px;
-    margin-left: auto;
-    margin-top: 0;
+tr:nth-child(even) {
+  background-color: #dddddd;
 }
-
-
-.profileUser-container header button:hover{
-    border-color: #999;
-    
-}
-
-.profileUser-container h1{
-    margin-top: 80px;
-    margin-bottom: 24px;
-}
-
-.profileUser-container ul{
-    display: grid;
-    grid-template-columns: repeat(2,1fr);
-    grid-gap: 20px;
-    list-style: none;
-    
-    
-}
-
-.profileUser-container ul li{
-    background: #f0f2f5;
-    padding: 24px;
-    border-radius: 8px;
-    position: relative;
-
-}
-
-.profileUser-container ul li button{
-    position: absolute;
-    right: 24px;
-    top:24px;
-    border: 0;
-}
-.profileUser-container ul li button:hover{
-    opacity: 80%;
-}
-
-.profileUser-container ul li strong{
-    display: block;
-    margin-bottom: 16px;
-    color: #41414d;
-}
-
-.profileUser-container ul li p + strong{
-    margin-top: 32px;
-}
-
-.profileUser-container ul li p {
-    color: #737380; 
-    line-height: 21px;
-    font-size: 16px;
-}
-
