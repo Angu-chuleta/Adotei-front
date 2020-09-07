@@ -2,7 +2,7 @@ import React from 'react';
 import Button from '@material-ui/core/Button';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem'
-import {FiMenu, FiHome} from 'react-icons/fi';
+import {FiMenu} from 'react-icons/fi';
 import { Link } from 'react-router-dom';
 import "./styles.css";
 
@@ -24,9 +24,13 @@ export default function Cabecalho(){
   
     return (
       <div className="cabecalho-container">
-
-
+          <div className = "form-Search">
+              <input type="text" 
+              placeholder="Buscar Animal..."
+              //onChange={<ResultadoBusca/>} colocar função de busca
+              />
         
+         </div>
         <Button aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick}>
            <FiMenu size={40}/>
         </Button>
@@ -37,15 +41,12 @@ export default function Cabecalho(){
           open={Boolean(anchorEl)}
           onClose={handleClose}
         > 
+          <MenuItem onClick={handleClose} component={Link} to="/adocao">Inicio</MenuItem>
           <MenuItem onClick={handleClose} component={Link} to="/profileuser">Perfil</MenuItem>
           <MenuItem onClick={handleClose} component={Link} to="/adocao">Animais</MenuItem>
           <MenuItem onClick={handleClose} component={Link} to="/">Sair</MenuItem>
         </Menu>
-        <header>
-          <button  className="button" type="button">
-                      <FiHome size={20} color="#FFF"/>
-          </button> 
-        </header>
+
       </div>
     );
 }

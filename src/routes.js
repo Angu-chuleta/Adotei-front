@@ -22,6 +22,8 @@ export default function Routes(){
                 <Route path="/buscar" component={BuscaPet}/>
                 <Route path="/infopet" component={InfoPet}/>
                 <Route path="/cabecalho" component={Cabecalho}/>
+                <Route path="/buscapet" component={BuscaPet}/>
+                
                 
             </Switch>
             

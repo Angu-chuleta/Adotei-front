@@ -15,8 +15,9 @@
 
 .alice-carousel ul li img{
     position: relative;
-    width: 790px;
-    height: 558.38px;
+    width: 758px;
+    height: 300.38px;
+    margin-bottom: initial;
     left: 335px;
     top: 0px;
     display: flex;
