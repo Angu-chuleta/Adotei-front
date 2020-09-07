@@ -2,8 +2,9 @@ import React from 'react';
 import Button from '@material-ui/core/Button';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem'
-import {FiMenu, FiHome} from 'react-icons/fi';
+import {FiMenu} from 'react-icons/fi';
 import { Link } from 'react-router-dom';
+import BuscaPet from '../BuscaPet'
 import "./styles.css";
 
 //npm install @material-ui/core --save
@@ -24,13 +25,7 @@ export default function Cabecalho(){
   
     return (
       <div className="cabecalho-container">
-
-
-      <header>
-      <button  className="button" type="button">
-                      <a href="/adocao">
-                      <FiHome size={20} color="#FFF"/></a>
-          </button> 
+        <BuscaPet/>        
         <Button aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick}>
            <FiMenu size={40}/>
         </Button>
@@ -41,13 +36,12 @@ export default function Cabecalho(){
           open={Boolean(anchorEl)}
           onClose={handleClose}
         > 
+          <MenuItem onClick={handleClose} component={Link} to="/adocao">Inicio</MenuItem>
           <MenuItem onClick={handleClose} component={Link} to="/profileuser">Perfil</MenuItem>
           <MenuItem onClick={handleClose} component={Link} to="/adocao">Animais</MenuItem>
           <MenuItem onClick={handleClose} component={Link} to="/">Sair</MenuItem>
         </Menu>
 
-
-        </header>
       </div>
     );
 }
