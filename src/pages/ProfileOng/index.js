@@ -4,6 +4,8 @@ import {FiTrash2} from 'react-icons/fi';
 import "./styles.css"
 import Cabecalho from '../Cabecalho';
 
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 export default function ProfileOng(){
 
     return(

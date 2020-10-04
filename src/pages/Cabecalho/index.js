@@ -4,6 +4,8 @@ import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import { FiMenu } from 'react-icons/fi';
 import { Link } from 'react-router-dom';
+
+import 'bootstrap/dist/css/bootstrap.min.css';
 import './styles.css';
 
 //npm install @material-ui/core --save

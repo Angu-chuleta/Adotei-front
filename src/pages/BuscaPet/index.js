@@ -4,6 +4,8 @@ import Cabecalho from '../Cabecalho';
 import { Link } from 'react-router-dom';
 import viralataCaramel1 from '../../assets/imagens/viralataCaramel1.jpg';
 
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 //npm install @material-ui/core --save
 
 export default function BuscaPet() {

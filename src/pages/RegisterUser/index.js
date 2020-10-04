@@ -1,6 +1,8 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 import {FiArrowLeft} from 'react-icons/fi';
+
+import 'bootstrap/dist/css/bootstrap.min.css';
 import './styles.css';
 
 export default function RegisterUser(){

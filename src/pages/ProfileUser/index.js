@@ -3,6 +3,8 @@ import "./styles.css"
 import Cabecalho from '../Cabecalho';
 import { FaHandHoldingHeart } from 'react-icons/fa';
 
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 export default function ProfileUser(){
 
   return(

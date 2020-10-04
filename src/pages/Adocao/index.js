@@ -3,6 +3,9 @@ import './styles.css';
 import Cabecalho from "../Cabecalho"
 import { Link } from 'react-router-dom';
 import  viralataCaramel1 from '../../assets/imagens/viralataCaramel1.jpg';
+
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 //import {FiArrowRight} from 'react-icons/fi'
 
 export default function Adocao(){
