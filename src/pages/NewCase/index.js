@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./styles.css";
 import Cabecalho from "../Cabecalho";
-import api from "../../services/api";
+import apiSevice from "../../services/api";
 
 export default function NewCase() {
   const [name, setName] = useState("");
@@ -23,10 +23,11 @@ export default function NewCase() {
     };
 
     try {
-      const response = await api.post("pet", data);
-      alert(`Cadastro realizado com sucesso${response}`);
+      const response = await apiSevice.api.post("pet", data);
+
+     console.log(`Cadastro realizado com sucesso`,response.data);
     } catch (err) {
-      alert("Erro no cadastro tente novamente", err);
+      console.log("Erro no cadastro tente novamente", err);
     }
   }
 
@@ -50,7 +51,8 @@ export default function NewCase() {
               onChange={(e) => setPorte(e.target.value)}
             />
             <input
-              placeholder="idade"
+              placeholder="Idade em meses"
+              type="number"
               value={idade}
               onChange={(e) => setIdade(e.target.value)}
             />

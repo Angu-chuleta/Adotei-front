@@ -1,7 +1,14 @@
 import axios from 'axios';
 
-const api = axios.create({
-    baseURL : 'http://localhost:3333'
+let token = JSON.parse(localStorage.getItem("adotei@token")) || {token:""};
+
+
+const apiService = axios.create({
+    baseURL : 'https://adotei-back.herokuapp.com',
+    headers: {
+        auth:token.token,
+    }
 })
 
-export default api;
+
+export default apiService;

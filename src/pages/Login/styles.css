@@ -46,7 +46,11 @@
     margin-top: 8px ;
     
 }
-
+.login-container .content section p {
+  font-size: 18px;
+  color: #737380;
+  line-height: 32;
+}
 
 /* Style all font awesome icons */
 .fa {
