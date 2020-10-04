@@ -10,7 +10,7 @@ export default function NewCase() {
   const [sobre, setSobre] = useState("");
   const [porte, setPorte] = useState("");
   const foiAdotado = false;
-  async function handleRegister2(e) {
+  async function handleRegister(e) {
     e.preventDefault();
 
     const data = {
@@ -38,7 +38,7 @@ export default function NewCase() {
           <section>
             <h1>Nova Adoção</h1>
           </section>
-          <form onSubmit={handleRegister2}>
+          <form onSubmit={handleRegister}>
             <input
               placeholder="Nome"
               value={name}
@@ -55,14 +55,14 @@ export default function NewCase() {
               onChange={(e) => setIdade(e.target.value)}
             />
 
-           
+            <label for="msg"></label>
             <textarea
               placeholder="Descrição:"
               value={sobre}
               onChange={(e) => setSobre(e.target.value)}
             />
             <input
-              type="file"
+              placeholder="Imagem"
               value={foto}
               onChange={(e) => setFoto(e.target.value)}
             />
