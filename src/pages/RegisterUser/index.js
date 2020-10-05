@@ -10,30 +10,38 @@ export default function RegisterUser() {
   const [foto, setFoto] = useState("");
   const [email, setEmail] = useState("");
   const [sobre, setSobre] = useState("");
-  const [credito, setCreditos] = useState("");
   const [telefone, setTelefone] = useState("");
+  const [username, setUsename] = useState("");
+  const [password, setPassword] = useState("");
   //const[city,setCity] = useState('');
   //const[state,setstate] = useState('');
 
   async function handleRegister(e) {
     e.preventDefault();
+    const role = 1;
+    const credito = 0;
 
     const data = {
-      name,
-      foto,
-      email,
-      telefone,
-      sobre,
-      credito,
+      username,
+      password,
+      role,
+      user: {
+        name,
+        foto,
+        email,
+        telefone,
+        sobre,
+        credito,
+      },
     };
 
     try {
-      const response = await apiService.post("user", data);
+      const response = await apiService.post("auth/new", data);
 
       console.log("Cadastro realizado com sucesso", response.status);
       history.push("/");
     } catch (err) {
-      console.log("Erro no cadastro tente novamente: ",err);
+      console.log("Erro no cadastro tente novamente: ", err);
     }
   }
 
@@ -49,9 +57,20 @@ export default function RegisterUser() {
         </section>
         <form onSubmit={handleRegister}>
           <input
-            placeholder="Nome"
+            placeholder="Nome completo"
             value={name}
             onChange={(e) => setName(e.target.value)}
+          />
+          <input
+            placeholder="Nome de usuário"
+            value={username}
+            onChange={(e) => setUsename(e.target.value)}
+          />
+          <input
+            placeholder="senha"
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
           />
           <input
             placeholder="Foto"
@@ -76,12 +95,6 @@ export default function RegisterUser() {
             value={sobre}
             onChange={(e) => setSobre(e.target.value)}
           />
-          <input
-            placeholder="Conta para doação"
-            value={credito}
-            onChange={(e) => setCreditos(e.target.value)}
-          />
-
           <button className="button" type="submit">
             Cadastrar
           </button>
