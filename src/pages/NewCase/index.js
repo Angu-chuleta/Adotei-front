@@ -23,7 +23,7 @@ export default function NewCase() {
     };
 
     try {
-      const response = await apiSevice.api.post("pet", data);
+      const response = await apiSevice.post("pet", data);
 
      console.log(`Cadastro realizado com sucesso`,response.data);
     } catch (err) {

@@ -15,7 +15,7 @@ export default function Login() {
     e.preventDefault();
 
     try {
-      const response = await apiSevice.api.post("/auth/login", { username, password });
+      const response = await apiSevice.post("/auth/login", { username, password });
       localStorage.setItem("adotei@token", JSON.stringify({ username, token: response.data.token }));
       apiSevice.token = response.data.token;
       console.log(apiSevice.token);
