@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import "./styles.css";
 import { Link, useHistory } from "react-router-dom";
-//import logodotei from '../../assets/imagens/logodotei.png'; <img src={logodotei} alt="Logo adotei" />
-// para mudar o backgrou vai no global
 import apiSevice from "../../services/api";
 import { FiLogIn } from "react-icons/fi";
 

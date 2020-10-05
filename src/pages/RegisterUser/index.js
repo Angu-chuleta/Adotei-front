@@ -1,10 +1,11 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { FiArrowLeft } from "react-icons/fi";
 import apiService from "../../services/api";
 import "./styles.css";
 
 export default function RegisterUser() {
+  const history = useHistory();
   const [name, setName] = useState("");
   const [foto, setFoto] = useState("");
   const [email, setEmail] = useState("");
@@ -29,9 +30,10 @@ export default function RegisterUser() {
     try {
       const response = await apiService.post("user", data);
 
-      alert("Cadastro realizado com sucesso", response.status);
+      console.log("Cadastro realizado com sucesso", response.status);
+      history.push("/");
     } catch (err) {
-      alert("Erro no cadastro tente novamente");
+      console.log("Erro no cadastro tente novamente: ",err);
     }
   }
 

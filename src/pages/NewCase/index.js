@@ -2,15 +2,17 @@ import React, { useState } from "react";
 import "./styles.css";
 import Cabecalho from "../Cabecalho";
 import apiSevice from "../../services/api";
+import { useHistory } from "react-router-dom";
 
 export default function NewCase() {
+  const history = useHistory();
   const [name, setName] = useState("");
   const [foto, setFoto] = useState("");
   const [idade, setIdade] = useState("");
   const [sobre, setSobre] = useState("");
   const [porte, setPorte] = useState("");
   const foiAdotado = false;
-  async function handleRegister(e) {
+  async function handleNewCase(e) {
     e.preventDefault();
 
     const data = {
@@ -24,8 +26,8 @@ export default function NewCase() {
 
     try {
       const response = await apiSevice.post("pet", data);
-
      console.log(`Cadastro realizado com sucesso`,response.data);
+     history.push("/profileong");
     } catch (err) {
       console.log("Erro no cadastro tente novamente", err);
     }
@@ -39,7 +41,7 @@ export default function NewCase() {
           <section>
             <h1>Nova Adoção</h1>
           </section>
-          <form onSubmit={handleRegister}>
+          <form onSubmit={handleNewCase}>
             <input
               placeholder="Nome"
               value={name}
@@ -64,7 +66,8 @@ export default function NewCase() {
               onChange={(e) => setSobre(e.target.value)}
             />
             <input
-              placeholder="Imagem"
+              
+              type="file"
               value={foto}
               onChange={(e) => setFoto(e.target.value)}
             />
