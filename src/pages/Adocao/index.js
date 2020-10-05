@@ -1,33 +1,66 @@
-import React from 'react';
-import './styles.css';
-import Cabecalho from "../Cabecalho"
-import { Link } from 'react-router-dom';
-import  viralataCaramel1 from '../../assets/imagens/viralataCaramel1.jpg';
+import React, { useState, useEffect } from "react";
+import "./styles.css";
+import Cabecalho from "../Cabecalho";
+import { Link } from "react-router-dom";
+import { makeStyles } from "@material-ui/core/styles";
+import GridList from "@material-ui/core/GridList";
+import GridListTile from "@material-ui/core/GridListTile";
+import GridListTileBar from "@material-ui/core/GridListTileBar";
+
+import apiService from "../../services/api";
 //import {FiArrowRight} from 'react-icons/fi'
 
-export default function Adocao(){
-        const nome = "Caramelin";
-        const raca = "Raça não identificada";
-        const idade = "6 meses";
- return(
+const useStyles = makeStyles((theme) => ({
+  root: {
+
+    marginTop: "10%",      
+    display: "flex",
+    flexWrap: "wrap",
+    justifyContent: "space-around",
+    overflow: "hidden",
+    backgroundColor: theme.palette.background.paper,
+  },
+  gridList: {
+             
+    flexWrap: "nowrap",
+    // Promote the list into his own layer on Chrome. This cost memory but helps keeping high FPS.
+    transform: "translateZ(0)",
+  },
+  title: {
+    color: theme.palette.primary.light,
+  },
+  titleBar: {
+    background:
+      "linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.3) 70%, rgba(0,0,0,0) 100%)",
+  },
+}));
+export default function Adocao() {
+  const classes = useStyles();
+  const [pets, setPets] = useState([]);
+  useEffect(() => {
+    apiService.get("pet").then((response) => {
+      setPets(response.data);
+    });
+  });
+
+  return (
     <div>
-    <Cabecalho/>
-        <div > 
-        <Link to="/infoPet">
+      <Cabecalho />
+      <div>
+        <div className={classes.root}>
+          <GridList className={classes.gridList} cols={2.5}>
+            {pets.map((tile) => (
+              <GridListTile key={tile.img}>
+                <img src={tile.foto} alt={tile.name} />
+                <GridListTileBar
+                  title={tile.name}
 
-                <div className="adocao-container">
-                <img src={viralataCaramel1} alt="Logo adotei"/>
-                        <div className="topo-retangulo-container">
-                               <p> <h1>{nome}</h1></p>
-                                <h2>{raca}</h2>
-                                <h2>{idade}</h2>
-                        </div>
-                        <div className="abaixo-retangulo-container"></div>
-                </div>
-                
-           </Link>
+                />
+              </GridListTile>
+            ))}
+          </GridList>
         </div>
-    </div>    
- );
-
+      </div>
+    </div>
+  );
 }

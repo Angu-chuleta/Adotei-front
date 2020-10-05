@@ -1,10 +1,12 @@
+
 .principal-container{
     margin: 0 auto;
     width: 50%; /* Valor da Largura */
+    margin-top: auto;
 }
 
 .adocao-container{
-    position: absolute;
+    margin-left: 10vw;
     width: 790px;
     height: 500px;
     left: 335px;
@@ -15,7 +17,7 @@
 }
 
 .topo-retangulo-container{
-    position: absolute;
+    margin-left: 10vw;
     width: 790px;
     height: 158.43px;
     right: 315px;
@@ -40,7 +42,8 @@
 }
 
 .abaixo-retangulo-container{
-    position: absolute;
+    margin-left: 10vw;
+    
     width: 790px;
     height: 80.72px;
     right: 315px;
