@@ -1,33 +1,38 @@
-import React, { useState } from "react";
-import "./styles.css";
-import { Link, useHistory } from "react-router-dom";
-import apiSevice from "../../services/api";
-import { FiLogIn } from "react-icons/fi";
+import React, { useState } from 'react';
+import './styles.css';
+import { Link, useHistory } from 'react-router-dom';
+import apiSevice from '../../services/api';
+import { FiLogIn } from 'react-icons/fi';
 
 export default function Login() {
   const history = useHistory();
-  const [username, setLogin] = useState("");
-  const [password, setSenha] = useState("");
+  const [username, setLogin] = useState('');
+  const [password, setSenha] = useState('');
 
   async function handleLogin(e) {
     e.preventDefault();
 
     try {
-      const response = await apiSevice.post("/auth/login", { username, password });
-      localStorage.setItem("adotei@token", JSON.stringify({ username, token: response.data.token }));
+      const response = await apiSevice.post('/auth/login', {
+        username,
+        password,
+      });
+      localStorage.setItem(
+        'adotei@token',
+        JSON.stringify({ username, token: response.data.token })
+      );
       apiSevice.token = response.data.token;
       console.log(apiSevice.token);
-      history.push("/adocao");
+      history.push('/adocao');
     } catch (err) {
-        console.log(err);
-        
-        alert("Erro ao logar: verifique seu login e senha!", err);
-    
+      console.log(err);
+
+      alert('Erro ao logar: verifique seu login e senha!', err);
     }
   }
 
   return (
-    <div className="login-container">
+    <div className="login-container col s12">
       <section className="form">
         <form onSubmit={handleLogin}>
           <h1>Login Adotei</h1>
