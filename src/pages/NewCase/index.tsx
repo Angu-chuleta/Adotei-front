@@ -1,17 +1,17 @@
-import React, { useState } from "react";
-import "./styles.css";
-import Cabecalho from "../Cabecalho";
-import apiSevice from "../../services/api";
+import React, { useState } from 'react';
+import './styles.css';
+import Cabecalho from '../Cabecalho';
+import apiSevice from '../../services/api';
 
 export default function NewCase() {
-  const [name, setName] = useState("");
-  const [foto, setFoto] = useState("");
-  const [idade, setIdade] = useState("");
-  const [sobre, setSobre] = useState("");
-  const [porte, setPorte] = useState("");
+  const [name, setName] = useState('');
+  const [foto, setFoto] = useState('');
+  const [idade, setIdade] = useState('');
+  const [sobre, setSobre] = useState('');
+  const [porte, setPorte] = useState('');
   const foiAdotado = false;
-  async function handleRegister(e) {
-    e.preventDefault();
+  async function handleRegister() {
+    // e.preventDefault();
 
     const data = {
       name,
@@ -23,11 +23,10 @@ export default function NewCase() {
     };
 
     try {
-      const response = await apiSevice.post("pet", data);
-
-     console.log(`Cadastro realizado com sucesso`,response.data);
+      const response = await apiSevice.post('pet', data);
+      console.log(`Cadastro realizado com sucesso`, response.data);
     } catch (err) {
-      console.log("Erro no cadastro tente novamente", err);
+      console.log('Erro no cadastro tente novamente', err);
     }
   }
 
@@ -57,12 +56,13 @@ export default function NewCase() {
               onChange={(e) => setIdade(e.target.value)}
             />
 
-            <label for="msg"></label>
-            <textarea
-              placeholder="Descrição:"
-              value={sobre}
-              onChange={(e) => setSobre(e.target.value)}
-            />
+            <label>
+              <textarea
+                placeholder="Descrição:"
+                value={sobre}
+                onChange={(e) => setSobre(e.target.value)}
+              />
+            </label>
             <input
               placeholder="Imagem"
               value={foto}

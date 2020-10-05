@@ -1,21 +1,21 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
-import { FiArrowLeft } from "react-icons/fi";
-import apiService from "../../services/api";
-import "./styles.css";
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { FiArrowLeft } from 'react-icons/fi';
+import apiService from '../../services/api';
+import './styles.css';
 
 export default function RegisterUser() {
-  const [name, setName] = useState("");
-  const [foto, setFoto] = useState("");
-  const [email, setEmail] = useState("");
-  const [sobre, setSobre] = useState("");
-  const [credito, setCreditos] = useState("");
-  const [telefone, setTelefone] = useState("");
+  const [name, setName] = useState('');
+  const [foto, setFoto] = useState('');
+  const [email, setEmail] = useState('');
+  const [sobre, setSobre] = useState('');
+  const [credito, setCreditos] = useState('');
+  const [telefone, setTelefone] = useState('');
   //const[city,setCity] = useState('');
   //const[state,setstate] = useState('');
 
-  async function handleRegister(e) {
-    e.preventDefault();
+  async function handleRegister() {
+    //e.preventDefault();
 
     const data = {
       name,
@@ -27,11 +27,11 @@ export default function RegisterUser() {
     };
 
     try {
-      const response = await apiService.post("user", data);
+      await apiService.post('user', data);
 
-      alert("Cadastro realizado com sucesso", response.status);
+      alert('Cadastro realizado com sucesso');
     } catch (err) {
-      alert("Erro no cadastro tente novamente");
+      alert('Erro no cadastro tente novamente');
     }
   }
 

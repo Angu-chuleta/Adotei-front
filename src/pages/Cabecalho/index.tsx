@@ -11,9 +11,9 @@ import './styles.css';
 export default function Cabecalho() {
   const [anchorEl, setAnchorEl] = React.useState(null);
 
-  const handleClick = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
+  function handleClick(target: any) {
+    setAnchorEl(target);
+  }
 
   const handleClose = () => {
     setAnchorEl(null);
@@ -33,7 +33,9 @@ export default function Cabecalho() {
       <Button
         aria-controls="simple-menu"
         aria-haspopup="true"
-        onClick={handleClick}
+        onClick={(target) => {
+          handleClick(target);
+        }}
       >
         <FiMenu size={40} />
       </Button>

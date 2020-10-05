@@ -1,37 +1,39 @@
-import React, { useState } from "react";
-import "./styles.css";
-import { Link, useHistory } from "react-router-dom";
+import React, { useState } from 'react';
+import './styles.css';
+import { Link, useHistory } from 'react-router-dom';
 //import logodotei from '../../assets/imagens/logodotei.png'; <img src={logodotei} alt="Logo adotei" />
 // para mudar o backgrou vai no global
-import apiSevice from "../../services/api";
-import { FiLogIn } from "react-icons/fi";
+import apiSevice from '../../services/api';
+import { FiLogIn } from 'react-icons/fi';
 
 export default function Login() {
   const history = useHistory();
-  const [username, setLogin] = useState("");
-  const [password, setSenha] = useState("");
+  const [username, setLogin] = useState('');
+  const [password, setSenha] = useState('');
 
-  async function handleLogin(e) {
-    e.preventDefault();
+  async function handleLogin() {
+    //e.preventDefault();
 
     try {
-      const response = await apiSevice.post("/auth/login", { username, password });
-      localStorage.setItem("adotei@token", JSON.stringify({ username, token: response.data.token }));
-      apiSevice.token = response.data.token;
-      console.log(apiSevice.token);
-      history.push("/adocao");
+      const response = await apiSevice.post('/auth/login', {
+        username,
+        password,
+      });
+      localStorage.setItem(
+        'adotei@token',
+        JSON.stringify({ username, token: response.data.token })
+      );
+      history.push('/adocao');
     } catch (err) {
-        console.log(err);
-        
-        alert("Erro ao logar: verifique seu login e senha!", err);
-    
+      console.log(err);
+      alert('Erro ao logar: verifique seu login e senha!');
     }
   }
 
   return (
     <div className="login-container">
       <section className="form">
-        <form onSubmit={handleLogin}>
+        <form onSubmit={() => handleLogin}>
           <h1>Login Adotei</h1>
           <input
             placeholder="Login"
@@ -44,7 +46,7 @@ export default function Login() {
             value={password}
             onChange={(e) => setSenha(e.target.value)}
           ></input>
-          <button className="button" type="submit">
+          <button onClick={handleLogin} className="button" type="submit">
             Entrar
           </button>
           <Link className=".back-link" to="/registeruser">
