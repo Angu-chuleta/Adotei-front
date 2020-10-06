@@ -1,18 +1,18 @@
-import React, { useState } from "react";
-import { Link, useHistory } from "react-router-dom";
-import { FiArrowLeft } from "react-icons/fi";
-import apiService from "../../services/api";
-import "./styles.css";
+import React, { useState } from 'react';
+import { Link, useHistory } from 'react-router-dom';
+import { FiArrowLeft } from 'react-icons/fi';
+import apiService from '../../services/api';
+import './styles.css';
 
 export default function RegisterUser() {
   const history = useHistory();
-  const [name, setName] = useState("");
-  const [foto, setFoto] = useState("");
-  const [email, setEmail] = useState("");
-  const [sobre, setSobre] = useState("");
-  const [telefone, setTelefone] = useState("");
-  const [username, setUsename] = useState("");
-  const [password, setPassword] = useState("");
+  const [name, setName] = useState('');
+  const [foto, setFoto] = useState('');
+  const [email, setEmail] = useState('');
+  const [sobre, setSobre] = useState('');
+  const [telefone, setTelefone] = useState('');
+  const [username, setUsename] = useState('');
+  const [password, setPassword] = useState('');
   //const[city,setCity] = useState('');
   //const[state,setstate] = useState('');
 
@@ -36,12 +36,12 @@ export default function RegisterUser() {
     };
 
     try {
-      const response = await apiService.post("auth/new", data);
+      const response = await apiService.post('auth/new', data);
 
-      console.log("Cadastro realizado com sucesso", response.status);
-      history.push("/");
+      console.log('Cadastro realizado com sucesso', response.status);
+      history.push('/');
     } catch (err) {
-      console.log("Erro no cadastro tente novamente: ", err);
+      console.log('Erro no cadastro tente novamente: ', err);
     }
   }
 
@@ -49,11 +49,13 @@ export default function RegisterUser() {
     <div className="registerUser-container">
       <div className="content">
         <section>
-          <h1>Cadastro</h1>
-          <p>Faça cadastro no Adotei e ajude os bichinhos </p>
-          <Link className=".back-link" to="/">
-            <FiArrowLeft size={16} color="black" /> Voltar
-          </Link>
+          <p>Faça cadastro no Adotei e ajude os bichinhos</p>
+
+          <a class="waves-effect waves-light btn ">
+            <Link className=".back-link" to="/">
+              Voltar
+            </Link>
+          </a>
         </section>
         <form onSubmit={handleRegister}>
           <input
@@ -72,12 +74,20 @@ export default function RegisterUser() {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
-          <input
-            placeholder="Foto"
-            type="file"
-            value={foto}
-            onChange={(e) => setFoto(e.target.value)}
-          />
+          <div className="file-field input-field">
+            <div className="btn">
+              <span>File</span>
+              <input
+                type="file"
+                value={foto}
+                onChange={(e) => setFoto(e.target.value)}
+              />
+            </div>
+            <div className="file-path-wrapper">
+              <input className="file-path validate" type="text" />
+            </div>
+          </div>
+
           <input
             placeholder="Email"
             type="email"
@@ -95,7 +105,12 @@ export default function RegisterUser() {
             value={sobre}
             onChange={(e) => setSobre(e.target.value)}
           />
-          <button className="button" type="submit">
+
+          <button
+            className="button btn waves-effect waves-light"
+            type="submit"
+            name="action"
+          >
             Cadastrar
           </button>
         </form>

@@ -1,68 +1,62 @@
-.newCase-container{
-    position: absolute;
-    width: 800px;
-    height: 800px;
-    left: 300px;
-    top: 80px; 
-    height: 80vh;
-    margin: 0 auto
-
+.newCase-container {
+  position: absolute;
+  width: 800px;
+  height: 800px;
+  left: 300px;
+  top: 80px;
+  height: 80vh;
+  margin: 0 auto;
 }
 
-h1{
-    text-align: center;
+h1 {
+  text-align: center;
 }
-.newCase-container .content{
-    width: 100%;
-    padding: 96px;
-    background: #f0f0f5;
-    box-shadow: 0 0 100px rgba(0, 0,0, 0,1);
-    border-radius: 8px;
-    justify-content: center;
-    align-items: center;
-
-}
-
-.newCase-container .content section{
-    width: 100%;
-    max-width: 380px;
+.newCase-container .content {
+  width: 100%;
+  padding: 96px;
+  background: #f0f0f5;
+  box-shadow: 0 0 100px rgba(0, 0, 0, 0, 1);
+  border-radius: 8px;
+  justify-content: center;
+  align-items: center;
 }
 
-.newCase-container .content section h1{
-    margin: 64px 0 32px;
-    font-size: 32px;
+.newCase-container .content section {
+  width: 100%;
+  max-width: 380px;
+}
+
+.newCase-container .content section h1 {
+  margin: 64px 0 32px;
+  font-size: 32px;
 }
 
 .registerUser-container .content section p {
-    font-size: 18px;
-    color: #737380;
-    line-height: 32;
+  font-size: 18px;
+  color: #737380;
 }
 
-.newCase-container .content form{
-    width: 100%;
-    max-width: 450px;
+.newCase-container .content form {
+  width: 100%;
+  max-width: 450px;
 }
 
-.newCase-container .content form input{
-    margin-top: 8px ;
+.newCase-container .content form input {
+  margin-top: 8px;
 }
 
 textarea {
+  width: 100%;
+  box-sizing: border-box;
 
-    width: 100%;
-    box-sizing: border-box;
+  /* Para harmonizar o look & feel das bordas nos campos de texto*/
+  border: 1px solid #999;
+  /* Para alinhar corretamente os campos de texto de várias linhas com sua label*/
+  vertical-align: top;
 
-    /* Para harmonizar o look & feel das bordas nos campos de texto*/
-    border: 1px solid #999;
-        /* Para alinhar corretamente os campos de texto de várias linhas com sua label*/
-    vertical-align: top;
+  /* Para dar espaço suficiente para digitar algum texto */
+  height: 5em;
 
-        /* Para dar espaço suficiente para digitar algum texto */
-    height: 5em;
-    
-        /* Para permitir aos usuários redimensionarem qualquer textarea verticalmente. Ele não funciona em todos os browsers */
-    resize: none;
-    
+  /* Para permitir aos usuários redimensionarem qualquer textarea verticalmente. Ele não funciona em todos os browsers */
+  resize: none;
 }
-

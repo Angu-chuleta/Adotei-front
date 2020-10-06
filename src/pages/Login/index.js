@@ -47,7 +47,7 @@ export default function Login() {
             value={password}
             onChange={(e) => setSenha(e.target.value)}
           ></input>
-          <button className="button" type="submit">
+          <button className="button btn waves-effect waves-light" type="submit">
             Entrar
           </button>
           <Link className=".back-link" to="/registeruser">

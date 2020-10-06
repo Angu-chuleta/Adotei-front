@@ -17,10 +17,11 @@ export default function Adocao() {
   return (
     <div>
       <Cabecalho />
-      <div class="row">
-        <div>
+      <div className="row">
+        <div className="col s3"></div>
+        <div className="col  s6">
           {pets.map((pet) => (
-            <div id="card" className="col s12 m7">
+            <div id="card" className="">
               <div className="card">
                 <div className="card-image">
                   <img src={pet.foto} alt={pet.name}></img>
