@@ -59,11 +59,11 @@ export default function RegisterUser() {
         <section>
           <p>Faça cadastro no Adotei e ajude os bichinhos</p>
 
-          <button className="waves-effect waves-light btn">
+          <a className="waves-effect waves-light btn">
             <Link className=".back-link" to="/">
               Voltar
             </Link>
-          </button>
+          </a>
         </section>
         <form onSubmit={handleRegister}>
           <input
@@ -101,22 +101,29 @@ export default function RegisterUser() {
               }) => (
                 // write your building UI
                 <div className="upload__image-wrapper">
-                  <button
+                  <a
+                    className="waves-effect waves-light btn"
                     style={isDragging ? { color: "red" } : undefined}
                     onClick={onImageUpload}
                     {...dragProps}
                   >
                     Click or Drop here
-                  </button>
+                  </a>
                   &nbsp;
                   {imageList.map((image, index) => (
                     <div key={index} className="image-item">
                       <img src={image["data_url"]} alt="" width="100" />
                       <div className="image-item__btn-wrapper">
-                        <button onClick={() => onImageUpdate(index)}>
+                        <button
+                          className="waves-effect waves-light btn"
+                          onClick={() => onImageUpdate(index)}
+                        >
                           Update
                         </button>
-                        <button onClick={() => onImageRemove(index)}>
+                        <button
+                          className="waves-effect waves-light btn"
+                          onClick={() => onImageRemove(index)}
+                        >
                           Remove
                         </button>
                       </div>
