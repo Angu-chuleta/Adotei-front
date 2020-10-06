@@ -8,27 +8,32 @@ export default function Login() {
   const history = useHistory();
   const [username, setLogin] = useState('');
   const [password, setSenha] = useState('');
-
+  const [load, setload] = useState('');
+  const [FildErro, setFildErro] = useState(false);
   async function handleLogin(e) {
     e.preventDefault();
+    setFildErro(false);
+    if (username !== '' && password !== '') {
+      setload('disabled');
 
-    try {
-      const response = await apiSevice.post('/auth/login', {
-        username,
-        password,
-      });
-      localStorage.setItem(
-        'adotei@token',
-        JSON.stringify({ username, token: response.data.token })
-      );
-      apiSevice.token = response.data.token;
-      console.log(apiSevice.token);
-      history.push('/adocao');
-    } catch (err) {
-      console.log(err);
+      try {
+        const response = await apiSevice.post('/auth/login', {
+          username,
+          password,
+        });
+        localStorage.setItem('adotei@token', JSON.stringify(response.data));
+        apiSevice.token = response.data.token;
+        history.push('/adocao');
+      } catch (err) {
+        console.log(err);
 
-      alert('Erro ao logar: verifique seu login e senha!', err);
+        alert('Erro ao logar: verifique seu login e senha!', err);
+      }
+    } else {
+      setFildErro(true);
     }
+
+    setload('');
   }
 
   return (
@@ -41,13 +46,19 @@ export default function Login() {
             value={username}
             onChange={(e) => setLogin(e.target.value)}
           ></input>
+          {FildErro ? <span id="erro">campo obrigatório</span> : null}
+
           <input
             placeholder="Senha"
             type="password"
             value={password}
             onChange={(e) => setSenha(e.target.value)}
           ></input>
-          <button className="button btn waves-effect waves-light" type="submit">
+          {FildErro ? <span id="erro">campo obrigatório</span> : null}
+          <button
+            className={load + 'button btn waves-effect waves-light'}
+            type="submit"
+          >
             Entrar
           </button>
           <Link className=".back-link" to="/registeruser">

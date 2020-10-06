@@ -21,7 +21,9 @@
 
 */
 }
-
+#erro {
+  color: #dd4b39;
+}
 .login-container section.form {
   width: 100%;
   max-width: 350px;

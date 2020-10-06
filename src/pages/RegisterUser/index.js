@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
-import { FiArrowLeft } from 'react-icons/fi';
 import apiService from '../../services/api';
 import './styles.css';
 
@@ -51,11 +50,11 @@ export default function RegisterUser() {
         <section>
           <p>Faça cadastro no Adotei e ajude os bichinhos</p>
 
-          <a class="waves-effect waves-light btn ">
+          <button className="waves-effect waves-light btn">
             <Link className=".back-link" to="/">
               Voltar
             </Link>
-          </a>
+          </button>
         </section>
         <form onSubmit={handleRegister}>
           <input

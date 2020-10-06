@@ -58,12 +58,6 @@
   opacity: 80%;
 }
 
-img {
-  border: 1px solid black;
-  width: 100%;
-  border-radius: 50px 50px 50px 50px;
-}
-
 .busca-pet-topo-retangulo-container {
   width: 92.5%;
   max-width: 1180px;

@@ -10,15 +10,14 @@ export default function Cabecalho() {
 
   useEffect(() => {
     let saved = JSON.parse(localStorage.getItem('adotei@token'));
-    setNome(saved.username);
-  });
+    setNome(saved.user.name);
+    console.log(saved);
+  }, []);
 
   return (
     <nav>
       <div className="nav-wrapper">
-        <a href="#" className="brand-logo">
-          <img id="logo" src={logodotei}></img>
-        </a>
+        <img id="logo" alt="logo" src={logodotei}></img>
 
         <ul id="nav-mobile" className="right hide-on-med-and-down">
           <li>

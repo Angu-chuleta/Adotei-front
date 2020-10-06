@@ -1,70 +1,61 @@
-import React from 'react';
-import "./styles.css"
+import React, { useEffect } from 'react';
+import './styles.css';
 import Cabecalho from '../Cabecalho';
 import { FaHandHoldingHeart } from 'react-icons/fa';
 
-export default function ProfileUser(){
+export default function ProfileUser() {
+  const [perfil, setPerfil] = React.useState({});
 
-  return(
+  useEffect(() => {
+    let saved = JSON.parse(localStorage.getItem('adotei@token'));
+    setPerfil(saved.user);
+  }, []);
+
+  return (
     <div>
-      <Cabecalho/>
-
-      <h1 className="msgh1">Minha Conta</h1>
-      <h2 className="msgh2h2">Ewerson Magias da Silva Lanche</h2>
-      <h3>
-        Saldo: <FaHandHoldingHeart /> 100
-      </h3>
-      <div className="profile-container">
-        <button>Adicionar Petcoin</button>
+      <Cabecalho />
+      <div className="row ">
+        <div className="col s2"></div>
+        <div className="col s8">
+          <div className="row box">
+            <div className="perfil col s6">
+              <img
+                className="circle responsive-img"
+                id="fotoPerfil"
+                alt={'foto de ' + perfil.name}
+                src={perfil.foto}
+              ></img>
+              <div className="dadosPerfil">
+                <h2 id="conta">{perfil.name}</h2>
+                <table>
+                  <tbody>
+                    <tr>
+                      <td>Sobre:</td>
+                      <td>{perfil.sobre}</td>
+                    </tr>
+                    <tr>
+                      <td>email:</td>
+                      <td>{perfil.email}</td>
+                    </tr>
+                    <tr>
+                      <td>telefone:</td>
+                      <td>{perfil.telefone}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div className="conta col s2">
+              <div id="saldo">
+                Saldo: <FaHandHoldingHeart /> {perfil.credito}
+              </div>
+              <button className="waves-effect waves-light btn">
+                Adicionar fundos
+              </button>
+            </div>
+          </div>
+        </div>
       </div>
-
-      <div className="doacoes-container">
-        <h1>Minhas doações</h1>
-      </div>
-      <table className="table-container">
-        <tr>
-          <th>Instituição</th>
-          <th>Data</th>
-          <th>Petcoin</th>
-          <th>Pet</th>
-        </tr>
-        <tr>
-          <td>Auaufanato</td>
-          <td>04/03/2020</td>
-          <td>20</td>
-          <td>Caramelin</td>
-        </tr>
-        <tr>
-          <td>Auaufanato</td>
-          <td>20/04/2020</td>
-          <td>30</td>
-          <td>Caramelin</td>
-        </tr>
-        <tr>
-          <td>Auaufanato</td>
-          <td>13/05/2020</td>
-          <td>5</td>
-          <td>Caramelin</td>
-        </tr>
-        <tr>
-          <td>Auaufanato</td>
-          <td>17/12/2020</td>
-          <td>30</td>
-          <td>Caramelin</td>
-        </tr>
-        <tr>
-          <td>Auaufanato</td>
-          <td>02/01/2019</td>
-          <td>10</td>
-          <td>Leona</td>
-        </tr>
-        <tr>
-          <td>Auaufanato</td>
-          <td>01/01/2019</td>
-          <td>10</td>
-          <td>Leona</td>
-        </tr>
-      </table>
     </div>
   );
 }

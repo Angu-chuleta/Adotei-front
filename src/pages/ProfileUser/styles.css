@@ -1,85 +1,33 @@
-.table-container {
-  position: absolute;
-  width: 1400px;
-  height: 264px;
-  left: 20px;
-  top: 628px;
-  font-family: arial, sans-serif;
-  border-collapse: collapse;
+.box {
+  margin-top: 20px;
   width: 100%;
+  background: #f0f0f5;
+  box-shadow: 0 0 100px rgba(0, 0, 0, 0, 1);
+  border-radius: 8px;
+  justify-content: center;
+  align-items: center;
+}
+.btn {
+  margin-bottom: 5px;
+}
+#fotoPerfil {
+  width: 200px;
+  height: 200px;
+}
+#saldo {
+  font-size: xx-large;
+
+  width: 200px;
+}
+.perfil {
+  margin-top: 20px;
+  margin-left: 40px;
+  min-width: 300px;
+}
+.dadosPerfil p {
+  font-size: large;
 }
 
-.msgh1 {
-  position: absolute;
-  width: 326px;
-  height: 56px;
-  left: 544px;
-  top: 118px;
-
-  font-family: Roboto;
-  font-style: normal;
-  font-weight: bold;
-  font-size: 48px;
-  line-height: 56px;
-
-  color: rgb(4, 4, 65);
-}
-
-.msgh2h2 {
-  position: absolute;
-  width: 352px;
-  height: 28px;
-  left: 547px;
-  top: 250px;
-
-  font-family: Roboto;
-  font-style: normal;
-  font-weight: 500;
-  font-size: 24px;
-  line-height: 28px;
-  text-align: center;
-
-  color: #859cb1;
-}
-h3 {
-  position: absolute;
-  width: 156px;
-  height: 28px;
-  left: 635px;
-  top: 300px;
-  color: rgb(4, 4, 65);
-}
-
-.doacoes-container h1 {
-  position: absolute;
-  width: 222px;
-  height: 35px;
-  left: 609px;
-  top: 550px;
-  font-family: Roboto;
-  font-style: normal;
-  font-weight: 500;
-  font-size: 30px;
-  line-height: 35px;
-  color: #2a3f54;
-}
-.profile-container button {
-  background-color: rgb(4, 4, 65);
-  color: #dddddd;
-  position: absolute;
-  width: 196px;
-  height: 50px;
-  left: 622px;
-  top: 350px;
-  border-radius: 10px 10px 10px 10px;
-}
-td,
-th {
-  border: 1px solid #dddddd;
-  text-align: center;
-  padding: 8px;
-}
-
-tr:nth-child(even) {
-  background-color: #dddddd;
+.conta {
+  min-width: 300px;
 }

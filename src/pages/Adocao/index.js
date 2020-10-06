@@ -12,7 +12,7 @@ export default function Adocao() {
     apiService.get('pet').then((response) => {
       setPets(response.data);
     });
-  });
+  }, []);
 
   return (
     <div>
@@ -21,7 +21,7 @@ export default function Adocao() {
         <div className="col s3"></div>
         <div className="col  s6">
           {pets.map((pet) => (
-            <div id="card" className="">
+            <div key={pet.id} id="card" className="">
               <div className="card">
                 <div className="card-image">
                   <img src={pet.foto} alt={pet.name}></img>
