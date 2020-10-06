@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './styles.css';
 import Cabecalho from '../Cabecalho';
-
 import apiService from '../../services/api';
-import { Link } from 'react-router-dom';
 //import {FiArrowRight} from 'react-icons/fi'
 
 export default function Adocao() {
@@ -23,7 +21,7 @@ export default function Adocao() {
         {pets.map((pet) => (
               <div className="card">
               <div className="card-image waves-effect waves-block waves-light">
-                <img className="activator" src={pet.foto}/>
+                <img className="activator" src={pet.foto} alt={pet.name}></img>
               </div>
               <div className="card-content">
                 <span className="card-title activator orange-text text-darken-2">{pet.name}</span>
