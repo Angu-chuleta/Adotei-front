@@ -1,65 +1,43 @@
-import React from 'react';
-import Button from '@material-ui/core/Button';
-import Menu from '@material-ui/core/Menu';
-import MenuItem from '@material-ui/core/MenuItem';
-import { FiMenu } from 'react-icons/fi';
+import React, { useEffect } from 'react';
+import logodotei from '../../assets/imagens/logodotei.png';
 import { Link } from 'react-router-dom';
 import './styles.css';
 
 //npm install @material-ui/core --save
 
 export default function Cabecalho() {
-  const [anchorEl, setAnchorEl] = React.useState(null);
+  const [nome, setNome] = React.useState('você!');
 
-  const handleClick = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
-
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
+  useEffect(() => {
+    let saved = JSON.parse(localStorage.getItem('adotei@token'));
+    setNome(saved.username);
+  });
 
   return (
-    <div className="cabecalho-container">
-      <div className="form-Search">
-        <form action="/buscapet">
-          <input
-            type="text"
-            placeholder="Buscar Animal..."
-            //onChange={<ResultadoBusca/>} colocar função de busca
-          />
-        </form>
+    <nav>
+      <div className="nav-wrapper">
+        <a href="#" className="brand-logo">
+          <img id="logo" src={logodotei}></img>
+        </a>
+
+        <ul id="nav-mobile" className="right hide-on-med-and-down">
+          <li>
+            <Link id="menuitem" to="/adocao">
+              Inicio
+            </Link>
+          </li>
+          <li>
+            <Link id="menuitem" to="/profileuser">
+              Perfil do {nome}
+            </Link>
+          </li>
+          <li>
+            <Link id="menuitem" to="/">
+              sair
+            </Link>
+          </li>
+        </ul>
       </div>
-      <Button
-        aria-controls="simple-menu"
-        aria-haspopup="true"
-        onClick={handleClick}
-      >
-        <FiMenu size={40} />
-      </Button>
-      <Menu
-        id="simple-menu"
-        anchorEl={anchorEl}
-        keepMounted
-        open={Boolean(anchorEl)}
-        onClose={handleClose}
-      >
-        <MenuItem onClick={handleClose} component={Link} to="/adocao">
-          Inicio
-        </MenuItem>
-        <MenuItem onClick={handleClose} component={Link} to="/profileong">
-          Perfil Ong
-        </MenuItem>
-        <MenuItem onClick={handleClose} component={Link} to="/profileuser">
-          Perfil Usuario
-        </MenuItem>
-        <MenuItem onClick={handleClose} component={Link} to="/adocao">
-          Animais
-        </MenuItem>
-        <MenuItem onClick={handleClose} component={Link} to="/">
-          Sair
-        </MenuItem>
-      </Menu>
-    </div>
+    </nav>
   );
 }

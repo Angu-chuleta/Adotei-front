@@ -1,33 +1,14 @@
-.cabecalho-container {
-  -ms-flex-item-align: baseline;
-  height: 50px;
-  width: 50px;
-  border-radius: 4px;
-  transition: border-color 0.2s;
-  margin-left: 93%;
+#logo {
+  margin-top: 1px;
+  margin-left: 1px;
+  max-width: 152px;
+  border: 0px;
+  border-radius: 5px 5px 5px 5px;
 }
-
-.cabecalho-container button {
-  margin-top: -50px;
-  margin-left: 25%;
-  height: 40px;
-  width: 40px;
+nav {
+  background-color: #ececec;
 }
-
-.cabecalho-container header button:hover {
-  border-color: #999;
+#menuitem {
+  font-style: italic;
+  color: #30475e;
 }
-
-.form-Search form {
-  padding: 5px;
-  margin-left: -1300%;
-  margin-top: 5px;
-  margin-right: 400px;
-  margin-bottom: -20px;
-}
-
-/*.conteudo > .container {
-    padding: 1.5em;
-    background: #FFF;
-    box-shadow: 0 0 8px rgba(0,0,0,0.2);
-}*/

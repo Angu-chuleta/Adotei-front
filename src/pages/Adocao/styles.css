@@ -1,63 +1,15 @@
-
-.principal-container{
-    margin: 0 auto;
-    width: 50%; /* Valor da Largura */
-    margin-top: auto;
+#sobre {
+  color: #f2a365;
 }
-
-.adocao-container{
-    margin-left: 10vw;
-    width: 790px;
-    height: 500px;
-    left: 335px;
-    top: 80px;
-    display: flex;
-    border-radius: 50px 50px 50px 50px;
-
+#card {
+  background-color: #222831;
 }
-
-.topo-retangulo-container{
-    margin-left: 10vw;
-    width: 790px;
-    height: 158.43px;
-    right: 315px;
-    left: 0.1px;
-    bottom: 459.57px;
-    justify-content: center;
-    top: 0px;
-    background: rgba(0, 0, 0, 0.7);
-    border-radius: 50px 50px 0px 0px
-    
+.card-content {
+  background-color: #30475e;
 }
-
-.topo-retangulo-container h1{
-    color: aliceblue;
-    text-align: center;
-    
+.card-action {
+  background-color: #30475e;
 }
-.topo-retangulo-container h2{
-    color: aliceblue;
-    text-indent: 10px;
-    
+.card-title {
+  text-shadow: 2px 2px #222831;
 }
-
-.abaixo-retangulo-container{
-    margin-left: 10vw;
-    
-    width: 790px;
-    height: 80.72px;
-    right: 315px;
-    left: 0.1px;
-    bottom: 63.12px;
-    justify-content: center;
-    top: 420px;
-    background: rgba(0, 0, 0, 0.7);
-    border-radius: 0px 0px 50px 50px
-}
-
-img {
-    border: 1px solid black;
-    width: 100%;
-    border-radius: 50px 50px 50px 50px
-}
-
