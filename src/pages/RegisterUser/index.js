@@ -1,19 +1,29 @@
-import React, { useState } from 'react';
-import { Link, useHistory } from 'react-router-dom';
-import apiService from '../../services/api';
-import './styles.css';
+import React, { useState } from "react";
+import { Link, useHistory } from "react-router-dom";
+import apiService from "../../services/api";
+import "./styles.css";
+import ImageUploading from "react-images-uploading";
 
 export default function RegisterUser() {
   const history = useHistory();
-  const [name, setName] = useState('');
-  const [foto, setFoto] = useState('');
-  const [email, setEmail] = useState('');
-  const [sobre, setSobre] = useState('');
-  const [telefone, setTelefone] = useState('');
-  const [username, setUsename] = useState('');
-  const [password, setPassword] = useState('');
+  const [name, setName] = useState("");
+  const [foto, setFoto] = useState("");
+  const [email, setEmail] = useState("");
+  const [sobre, setSobre] = useState("");
+  const [telefone, setTelefone] = useState("");
+  const [username, setUsename] = useState("");
+  const [password, setPassword] = useState("");
   //const[city,setCity] = useState('');
   //const[state,setstate] = useState('');
+
+  const [images, setImages] = React.useState([]);
+  const maxNumber = 1;
+
+  const onChangeImage = (imageList, addUpdateIndex) => {
+    console.log(imageList, addUpdateIndex);
+    setImages(imageList);
+    setFoto(imageList[0].data_url);
+  };
 
   async function handleRegister(e) {
     e.preventDefault();
@@ -33,14 +43,13 @@ export default function RegisterUser() {
         credito,
       },
     };
-
     try {
-      const response = await apiService.post('auth/new', data);
+      const response = await apiService.post("auth/new", data);
 
-      console.log('Cadastro realizado com sucesso', response.status);
-      history.push('/');
+      console.log("Cadastro realizado com sucesso", response.status);
+      history.push("/");
     } catch (err) {
-      console.log('Erro no cadastro tente novamente: ', err);
+      console.log("Erro no cadastro tente novamente: ", err);
     }
   }
 
@@ -73,18 +82,49 @@ export default function RegisterUser() {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
-          <div className="file-field input-field">
-            <div className="btn">
-              <span>File</span>
-              <input
-                type="file"
-                value={foto}
-                onChange={(e) => setFoto(e.target.value)}
-              />
-            </div>
-            <div className="file-path-wrapper">
-              <input className="file-path validate" type="text" />
-            </div>
+
+          <div className="App">
+            <ImageUploading
+              multiple
+              value={images}
+              onChange={onChangeImage}
+              maxNumber={maxNumber}
+              dataURLKey="data_url"
+            >
+              {({
+                imageList,
+                onImageUpload,
+                onImageUpdate,
+                onImageRemove,
+                isDragging,
+                dragProps,
+              }) => (
+                // write your building UI
+                <div className="upload__image-wrapper">
+                  <button
+                    style={isDragging ? { color: "red" } : undefined}
+                    onClick={onImageUpload}
+                    {...dragProps}
+                  >
+                    Click or Drop here
+                  </button>
+                  &nbsp;
+                  {imageList.map((image, index) => (
+                    <div key={index} className="image-item">
+                      <img src={image["data_url"]} alt="" width="100" />
+                      <div className="image-item__btn-wrapper">
+                        <button onClick={() => onImageUpdate(index)}>
+                          Update
+                        </button>
+                        <button onClick={() => onImageRemove(index)}>
+                          Remove
+                        </button>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </ImageUploading>
           </div>
 
           <input
