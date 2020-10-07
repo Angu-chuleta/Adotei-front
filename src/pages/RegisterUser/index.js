@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import apiService from "../../services/api";
 import "./styles.css";
-import ImageUploading from "react-images-uploading";
+// import ImageUploading from "react-images-uploading";
 
 export default function RegisterUser() {
   const history = useHistory();
@@ -16,14 +16,14 @@ export default function RegisterUser() {
   //const[city,setCity] = useState('');
   //const[state,setstate] = useState('');
 
-  const [images, setImages] = React.useState([]);
-  const maxNumber = 1;
+  // const [images, setImages] = React.useState([]);
+  // const maxNumber = 1;
 
-  const onChangeImage = (imageList, addUpdateIndex) => {
-    console.log(imageList, addUpdateIndex);
-    setImages(imageList);
-    setFoto(imageList[0].data_url);
-  };
+  // const onChangeImage = (imageList, addUpdateIndex) => {
+  //   console.log(imageList, addUpdateIndex);
+  //   setImages(imageList);
+  //   setFoto(`${imageList[0].data_url}`);
+  // };
 
   async function handleRegister(e) {
     e.preventDefault();
@@ -82,8 +82,12 @@ export default function RegisterUser() {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
-
-          <div className="App">
+          <input type="url"
+          placeholder="Coloque o link da imagem aqui!"
+            value={foto}
+            onChange={(e)=>setFoto(e.target.value)}
+          />
+          {/* <div className="App">
             <ImageUploading
               multiple
               value={images}
@@ -132,7 +136,7 @@ export default function RegisterUser() {
                 </div>
               )}
             </ImageUploading>
-          </div>
+          </div> */}
 
           <input
             placeholder="Email"

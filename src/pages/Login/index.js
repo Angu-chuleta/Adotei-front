@@ -16,7 +16,7 @@ export default function Login() {
     if (store !== null) {
       history.push("/adocao");
     }
-  }, []);
+  }, [history]);
 
   async function handleLogin(e) {
     e.preventDefault();

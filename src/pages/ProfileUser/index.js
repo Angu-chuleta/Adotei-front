@@ -29,7 +29,7 @@ export default function ProfileUser() {
         localStorage.setItem("adotei@perfil", JSON.stringify(r.data));
       });
     }
-  }, []);
+  }, [history]);
 
   return (
     <div>
