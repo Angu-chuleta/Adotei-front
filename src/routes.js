@@ -8,7 +8,6 @@ import NewPet from "./pages/NewCase";
 import Adocao from "./pages/Adocao";
 import Cabecalho from "./pages/Cabecalho";
 import BuscaPet from "./pages/BuscaPet";
-
 import ProfileOng from "./pages/ProfileOng";
 export default function Routes() {
   return (
