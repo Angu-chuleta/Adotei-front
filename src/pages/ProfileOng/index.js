@@ -8,7 +8,6 @@ import apiService from "../../services/api";
 //Incluir instituição no cadastro Pet
 export default function ProfileOng() {
   const [pets, setPets] = useState([]);
-  
 
   useEffect(() => {
     apiService.get("pet").then((response) => {
@@ -18,10 +17,8 @@ export default function ProfileOng() {
 
   async function hundleDeleteCase(pet) {
     try {
-       
-     await apiService.delete(`pet/${pet._id}`);
-     setPets(pets.filter(pets => pets._id !== pet._id));
-      
+      await apiService.delete(`pet/${pet._id}`);
+      setPets(pets.filter((pets) => pets._id !== pet._id));
     } catch (err) {
       alert(`Erro ao deletar: ${err}`);
     }
@@ -34,7 +31,7 @@ export default function ProfileOng() {
         <header>
           <span>Bem vindo, Usuário</span>
 
-          <Link className="button" to="/new">
+          <Link className="button btn waves-effect waves-light " to="/new">
             Cadastrar novo caso
           </Link>
         </header>
@@ -43,12 +40,11 @@ export default function ProfileOng() {
         <ul>
           {pets.map((pet) => (
             <li key={pet._id}>
-              
               <div className="card">
                 <div className="card-image waves-effect waves-block waves-light">
-                    {console.log(pet._id)}
-                  <button type="button" onClick={()=>hundleDeleteCase(pet)}>
-                    <FiTrash2  size={20} color="#a8a8b3" />
+                  {console.log(pet._id)}
+                  <button type="button" onClick={() => hundleDeleteCase(pet)}>
+                    <FiTrash2 size={20} color="#a8a8b3" />
                   </button>
                   <img
                     className="activator"

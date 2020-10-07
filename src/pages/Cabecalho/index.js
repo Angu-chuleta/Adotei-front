@@ -14,7 +14,7 @@ export default function Cabecalho() {
     let saved = JSON.parse(localStorage.getItem("adotei@token"));
     saved === null ? history.push("/") : setNome(saved.user.name);
     console.log(saved);
-    //setRole(saved.user.role);
+    setRole(saved.role);
   }, []);
 
   function logout() {
@@ -29,9 +29,13 @@ export default function Cabecalho() {
         <ul id="nav-mobile" className="right hide-on-med-and-down">
           {role == 2 ? (
             <li>
-              <Link id="menuitem" to="/profileuser">
-                Perfil do {nome}
-              </Link>
+              <ul>
+                <li>
+                  <Link id="menuitem" to="/profileong">
+                    Admin
+                  </Link>
+                </li>
+              </ul>
             </li>
           ) : (
             <div></div>

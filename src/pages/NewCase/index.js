@@ -45,7 +45,7 @@ export default function NewCase() {
     try {
       console.log(data);
       const response = await apiService.post("pet", data);
-     console.log(`Cadastro realizado com sucesso`, response.data);
+      console.log(`Cadastro realizado com sucesso`, response.data);
 
       history.push("/profileong");
     } catch (err) {
@@ -69,19 +69,34 @@ export default function NewCase() {
             />
             <p>
               <label>
-                <input name="group1" value="Grande" type="radio" onChange={radioPorte} />
+                <input
+                  name="porte"
+                  value="Grande"
+                  type="radio"
+                  onChange={radioPorte}
+                />
                 <span>Grande</span>
               </label>
             </p>
             <p>
               <label>
-                <input name="group1" value="Médio" type="radio" onChange={radioPorte} />
+                <input
+                  name="porte"
+                  value="Médio"
+                  type="radio"
+                  onChange={radioPorte}
+                />
                 <span>Médio</span>
               </label>
             </p>
             <p>
               <label>
-                <input name="group1" value="Pequeno" type="radio" onChange={radioPorte} />
+                <input
+                  name="porte"
+                  value="Pequeno"
+                  type="radio"
+                  onChange={radioPorte}
+                />
                 <span>Pequeno</span>
               </label>
             </p>
@@ -112,7 +127,7 @@ export default function NewCase() {
                       key={o._id}
                       value={o._id}
                       onChange={radioChange}
-                      name={ongRadio}
+                      name="ong"
                       type="radio"
                     />
                     <span>{o.name}</span>
@@ -121,7 +136,10 @@ export default function NewCase() {
               ))}
             </div>
 
-            <button className="button" type="submit">
+            <button
+              className="button btn waves-effect waves-light"
+              type="submit"
+            >
               Cadastrar
             </button>
           </form>
