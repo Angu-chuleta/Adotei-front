@@ -48,37 +48,53 @@ export default function Login() {
   }
 
   return (
-    <div className="login-container col s12">
-      <section className="form">
-        <form onSubmit={handleLogin}>
-          <h1>Login Adotei</h1>
-          <input
-            placeholder="Login"
-            value={username}
-            onChange={(e) => setLogin(e.target.value)}
-          ></input>
-          {FildErro ? <span id="erro">campo obrigatório</span> : null}
+    <div className="row">
+      <div className="login-container col s4 offset-s4">
+        <section className="form col s8 offset-s2">
+          <form onSubmit={handleLogin}>
+            <h1 id="adotei">Adotei</h1>
 
-          <input
-            placeholder="Senha"
-            type="password"
-            value={password}
-            onChange={(e) => setSenha(e.target.value)}
-          ></input>
-          {FildErro ? <span id="erro">campo obrigatório</span> : null}
-          <button
-            className={load + "button btn waves-effect waves-light"}
-            type="submit"
-          >
-            Entrar
-          </button>
-          <Link className=".back-link" to="/registeruser">
-            <Link className="fa fa-facebook" to="/adocao"></Link>
-            <Link className="fa fa-google" to="/adocao"></Link>
-            <FiLogIn size={16} color="black" /> Cadastrar
-          </Link>
-        </form>
-      </section>
+            <h3 id="bemvindo">Bem vindo!</h3>
+
+            <h5 id="textologin">faça seu login:</h5>
+            <input
+              placeholder="Login"
+              value={username}
+              onChange={(e) => setLogin(e.target.value)}
+            ></input>
+            {FildErro ? <span id="erro">campo obrigatório</span> : null}
+
+            <input
+              placeholder="Senha"
+              type="password"
+              value={password}
+              onChange={(e) => setSenha(e.target.value)}
+            ></input>
+            {FildErro ? <span id="erro">campo obrigatório</span> : null}
+            {!load ? (
+              <button
+                className={"button btn waves-effect waves-light"}
+                type="submit"
+              >
+                Entrar
+              </button>
+            ) : (
+              <div className="progress">
+                <div className="indeterminate"></div>
+              </div>
+            )}
+
+            <Link className="row" to="/registeruser">
+              {/* <Link className="fa fa-facebook" to="/adocao"></Link>
+            <Link className="fa fa-google" to="/adocao"></Link> */}
+              <div className="col s4 ">
+                <FiLogIn size={16} color="#3b5998" />
+                <span id="cadastro">Cadastrar</span>
+              </div>
+            </Link>
+          </form>
+        </section>
+      </div>
     </div>
   );
 }
