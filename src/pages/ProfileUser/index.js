@@ -34,9 +34,8 @@ export default function ProfileUser() {
   return (
     <div>
       <Cabecalho />
-      <div className="row ">
-        <div className="col s2"></div>
-        <div className="col s8">
+      <div className="row">
+        <div className="col s6 offset-s3">
           <div className="row box">
             <div className="perfil col s6">
               <img

@@ -87,7 +87,7 @@ export default function Login() {
             <Link className="row" to="/registeruser">
               {/* <Link className="fa fa-facebook" to="/adocao"></Link>
             <Link className="fa fa-google" to="/adocao"></Link> */}
-              <div className="col s4 ">
+              <div className="col s12">
                 <FiLogIn size={16} color="#3b5998" />
                 <span id="cadastro">Cadastrar</span>
               </div>
