@@ -13,7 +13,7 @@ export default function Login() {
 
   useEffect(() => {
     let store = JSON.parse(localStorage.getItem("adotei@token"));
-    if (store) {
+    if (store !== null) {
       history.push("/adocao");
     }
   }, []);
@@ -34,7 +34,6 @@ export default function Login() {
           "adotei@perfil",
           JSON.stringify(response.data.user)
         );
-        apiSevice.token = response.data.token;
         history.push("/adocao");
       } catch (err) {
         console.log(err);

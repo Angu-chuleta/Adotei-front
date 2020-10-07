@@ -1,6 +1,6 @@
 import axios from "axios";
 
-let store = JSON.stringify({ token: localStorage.getItem("adotei@token") });
+let store = JSON.parse(localStorage.getItem("adotei@token") || {});
 
 const apiService = axios.create({
   baseURL: "https://adotei-back.herokuapp.com",
