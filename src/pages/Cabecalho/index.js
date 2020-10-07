@@ -15,7 +15,7 @@ export default function Cabecalho() {
     saved === null ? history.push("/") : setNome(saved.user.name);
     console.log(saved);
     setRole(saved.role);
-  }, []);
+  }, [history]);
 
   function logout() {
     localStorage.removeItem("adotei@token");
@@ -27,7 +27,7 @@ export default function Cabecalho() {
         <img id="logo" alt="logo" src={logodotei}></img>
 
         <ul id="nav-mobile" className="right hide-on-med-and-down">
-          {role == 2 ? (
+          {role === 2 ? (
             <li>
               <ul>
                 <li>

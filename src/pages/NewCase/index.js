@@ -28,7 +28,6 @@ export default function NewCase() {
   const [sobre, setSobre] = useState("");
   const [porte, setPorte] = useState("");
   const foiAdotado = false;
-  let ongRadio;
   async function handleNewCase(e) {
     e.preventDefault();
 
