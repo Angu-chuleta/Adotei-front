@@ -3,28 +3,32 @@ import "./styles.css";
 import Cabecalho from "../Cabecalho";
 import { FaHandHoldingHeart } from "react-icons/fa";
 import apiService from "../../services/api";
+import { useHistory } from "react-router-dom";
 
 export default function ProfileUser() {
   const [perfil, setPerfil] = React.useState({});
+  const history = useHistory();
 
- async function addCredito() {
-
+  async function addCredito() {
     await apiService.post(`/user/${perfil._id}/addcredit`, { credito: 1 });
     apiService.get(`/user/${perfil._id}/`).then((r) => {
       console.log(r.data);
       setPerfil(r.data);
-      localStorage.setItem("adotei@perfil",JSON.stringify(r.data));
+      localStorage.setItem("adotei@perfil", JSON.stringify(r.data));
     });
   }
 
   useEffect(() => {
     const storage = JSON.parse(localStorage.getItem("adotei@token"));
-    apiService.get(`/user/${storage.user._id}/`).then((r) => {
-      console.log(r.data);
-      setPerfil(r.data);
-      localStorage.setItem("adotei@perfil",JSON.stringify(r.data));
-    });
-    
+    if (storage === null) {
+      history.push("/");
+    } else {
+      apiService.get(`/user/${storage.user._id}/`).then((r) => {
+        console.log(r.data);
+        setPerfil(r.data);
+        localStorage.setItem("adotei@perfil", JSON.stringify(r.data));
+      });
+    }
   }, []);
 
   return (

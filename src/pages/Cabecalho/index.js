@@ -7,12 +7,14 @@ import "./styles.css";
 
 export default function Cabecalho() {
   const [nome, setNome] = React.useState("você!");
+  const [role, setRole] = React.useState(1);
   const history = useHistory();
 
   useEffect(() => {
     let saved = JSON.parse(localStorage.getItem("adotei@token"));
     saved === null ? history.push("/") : setNome(saved.user.name);
     console.log(saved);
+    //setRole(saved.user.role);
   }, []);
 
   function logout() {
@@ -25,6 +27,16 @@ export default function Cabecalho() {
         <img id="logo" alt="logo" src={logodotei}></img>
 
         <ul id="nav-mobile" className="right hide-on-med-and-down">
+          {role == 2 ? (
+            <li>
+              <Link id="menuitem" to="/profileuser">
+                Perfil do {nome}
+              </Link>
+            </li>
+          ) : (
+            <div></div>
+          )}
+
           <li>
             <Link id="menuitem" to="/adocao">
               Inicio
