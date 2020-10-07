@@ -1,19 +1,24 @@
-import React, { useEffect } from 'react';
-import logodotei from '../../assets/imagens/logodotei.png';
-import { Link } from 'react-router-dom';
-import './styles.css';
+import React, { useEffect } from "react";
+import logodotei from "../../assets/imagens/logodotei.png";
+import { Link, useHistory } from "react-router-dom";
+import "./styles.css";
 
 //npm install @material-ui/core --save
 
 export default function Cabecalho() {
-  const [nome, setNome] = React.useState('você!');
+  const [nome, setNome] = React.useState("você!");
+  const history = useHistory();
 
   useEffect(() => {
-    let saved = JSON.parse(localStorage.getItem('adotei@token'));
-    setNome(saved.user.name);
+    let saved = JSON.parse(localStorage.getItem("adotei@token"));
+    saved === null ? history.push("/") : setNome(saved.user.name);
     console.log(saved);
   }, []);
 
+  function logout() {
+    localStorage.removeItem("adotei@token");
+    history.push("/");
+  }
   return (
     <nav>
       <div className="nav-wrapper">
@@ -31,7 +36,7 @@ export default function Cabecalho() {
             </Link>
           </li>
           <li>
-            <Link id="menuitem" to="/">
+            <Link id="menuitem" onClick={() => logout()}>
               sair
             </Link>
           </li>

@@ -1,39 +1,43 @@
-import React, { useState } from 'react';
-import './styles.css';
-import { Link, useHistory } from 'react-router-dom';
-import apiSevice from '../../services/api';
-import { FiLogIn } from 'react-icons/fi';
+import React, { useState } from "react";
+import "./styles.css";
+import { Link, useHistory } from "react-router-dom";
+import apiSevice from "../../services/api";
+import { FiLogIn } from "react-icons/fi";
 
 export default function Login() {
   const history = useHistory();
-  const [username, setLogin] = useState('');
-  const [password, setSenha] = useState('');
-  const [load, setload] = useState('');
+  const [username, setLogin] = useState("");
+  const [password, setSenha] = useState("");
+  const [load, setload] = useState("");
   const [FildErro, setFildErro] = useState(false);
   async function handleLogin(e) {
     e.preventDefault();
     setFildErro(false);
-    if (username !== '' && password !== '') {
-      setload('disabled');
+    if (username !== "" && password !== "") {
+      setload("disabled");
 
       try {
-        const response = await apiSevice.post('/auth/login', {
+        const response = await apiSevice.post("/auth/login", {
           username,
           password,
         });
-        localStorage.setItem('adotei@token', JSON.stringify(response.data));
+        localStorage.setItem("adotei@token", JSON.stringify(response.data));
+        localStorage.setItem(
+          "adotei@perfil",
+          JSON.stringify(response.data.user)
+        );
         apiSevice.token = response.data.token;
-        history.push('/adocao');
+        history.push("/adocao");
       } catch (err) {
         console.log(err);
 
-        alert('Erro ao logar: verifique seu login e senha!', err);
+        alert("Erro ao logar: verifique seu login e senha!", err);
       }
     } else {
       setFildErro(true);
     }
 
-    setload('');
+    setload("");
   }
 
   return (
@@ -56,7 +60,7 @@ export default function Login() {
           ></input>
           {FildErro ? <span id="erro">campo obrigatório</span> : null}
           <button
-            className={load + 'button btn waves-effect waves-light'}
+            className={load + "button btn waves-effect waves-light"}
             type="submit"
           >
             Entrar
