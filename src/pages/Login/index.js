@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./styles.css";
 import { Link, useHistory } from "react-router-dom";
 import apiSevice from "../../services/api";
@@ -10,6 +10,14 @@ export default function Login() {
   const [password, setSenha] = useState("");
   const [load, setload] = useState("");
   const [FildErro, setFildErro] = useState(false);
+
+  useEffect(() => {
+    let store = JSON.parse(localStorage.getItem("adotei@token"));
+    if (store) {
+      history.push("/adocao");
+    }
+  }, []);
+
   async function handleLogin(e) {
     e.preventDefault();
     setFildErro(false);
