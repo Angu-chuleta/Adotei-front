@@ -17,18 +17,25 @@ export default function Adocao() {
     <div>
       <Cabecalho />
       <div className="row">
-        <div className="col s3" />
-        <div className="col  s6">
+        <div className="col  s6 offset-s3 home-container">
           {pets.map((pet) => (
-            <div className="card">
+            <div className="card z-depth-3">
               <div className="card-image waves-effect waves-block waves-light">
-                <img className="activator" src={pet.foto} alt={pet.name}></img>
+                <img
+                  className="activator fotos"
+                  src={pet.foto}
+                  alt={pet.name}
+                ></img>
               </div>
               <div className="card-content">
-                <span className="card-title activator orange-text text-darken-2">
-                  {pet.name}
-                </span>
-                Carinho
+                <div className="row">
+                  <p className="col s11 card-title activator orange-text text-darken-2">
+                    {pet.name}
+                  </p>
+                  <a className="col btn-floating btn-large waves-effect waves-light red">
+                    <i className="carinho material-icons">favorite</i>
+                  </a>
+                </div>
               </div>
               <div className="card-reveal">
                 <span className="card-title orange-text text-darken-2">

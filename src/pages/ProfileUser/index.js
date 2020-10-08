@@ -36,7 +36,7 @@ export default function ProfileUser() {
       <Cabecalho />
       <div className="row">
         <div className="col s6 offset-s3">
-          <div className="row box">
+          <div className="row box z-depth-3">
             <div className="perfil col s6">
               <img
                 className="circle responsive-img"

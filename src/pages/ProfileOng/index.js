@@ -36,18 +36,21 @@ export default function ProfileOng() {
           </Link>
         </header>
 
-        <h1>Casos cadastrados</h1>
-        <ul>
+        <h1>Casos {pets.length} cadastrados</h1>
+        <ul className="box">
           {pets.map((pet) => (
             <li key={pet._id}>
-              <div className="card">
-                <div className="card-image waves-effect waves-block waves-light">
-                  {console.log(pet._id)}
-                  <button type="button" onClick={() => hundleDeleteCase(pet)}>
-                    <FiTrash2 size={20} color="#a8a8b3" />
-                  </button>
+              <div className="card z-depth-2">
+                <div className="z-depth-2 card-image waves-effect waves-block waves-light">
+                  <div
+                    onClick={() => hundleDeleteCase(pet)}
+                    className="btnlixo col s1 offset-s10"
+                  >
+                    <FiTrash2 size={32} color="#f2a365" />
+                  </div>
+
                   <img
-                    className="activator"
+                    className="fotos activator"
                     src={pet.foto}
                     alt={pet.name}
                   ></img>
