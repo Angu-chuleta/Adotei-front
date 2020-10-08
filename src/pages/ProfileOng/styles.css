@@ -56,23 +56,24 @@
 
 }
 
-.profileUser-container ul li button{
+.profileUser-container  ul button{
     position: absolute;
     right: 24px;
     top:24px;
     border: 0;
+    
 }
-.profileUser-container ul li button:hover{
-    opacity: 80%;
+.profileUser-container ul button:hover{
+    color: red;
 }
 
-.profileUser-container ul li strong{
+.profileUser-container ul strong{
     display: block;
     margin-bottom: 16px;
     color: #41414d;
 }
 
-.profileUser-container ul li p + strong{
+.profileUser-container ul  p + strong{
     margin-top: 32px;
 }
 
@@ -81,4 +82,5 @@
     line-height: 21px;
     font-size: 16px;
 }
+
 
