@@ -32,9 +32,9 @@ export default function Adocao() {
                   <p className="col s11 card-title activator orange-text text-darken-2">
                     {pet.name}
                   </p>
-                  <a className="col btn-floating btn-large waves-effect waves-light red">
+                  <button className="col btn-floating btn-large waves-effect waves-light red">
                     <i className="carinho material-icons">favorite</i>
-                  </a>
+                  </button>
                 </div>
               </div>
               <div className="card-reveal">

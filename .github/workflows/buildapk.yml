@@ -3,45 +3,37 @@ name: Android Build CI
 on:
   push:
     branches:
-      - 'dev'
+      - "dev"
 
-jobs:
-  build:
-    name: Gerando APK
-    runs-on: ubuntu-latest
+      jobs: 
+        run:
+          name: Lint with ESLint
+          runs-on: ubuntu-latest
+          steps: 
+          - name: Checkout repo
+            uses: actions/checkout@v2
+      
+          - name: Set up Node.js
+            uses: actions/setup-node@v1
+            with:
+              node-version: 12.x
+          
+          - name: Install dependencies
+            run: npm install
+      
+          - name: Build
+            run: npm run build
 
-    steps:
-      - name: Use coturiv/setup-ionic
-        uses: coturiv/setup-ionic@v1
-        with:
-          cordova-version: 8
 
-      - name: baixa repo
-        uses: actions/checkout@v2
-
-      - name: install node
-        run: npm i
-
-      - name: builda para web
-        run: npm run build
-
-      - name: corrige bug do capacitor
-        run: npx jetifier
-
-      - name: builda usando capacitor
-        run: ionic cap run android
-
-      - name: setup JDK 1.8
-        uses: actions/setup-java@v1
-        with:
-          java-version: 1.8
-
-      - name: Build debug APK
-        working-directory: ./android/
-        run: ./gradlew assembleDebug --stacktrace
-
-      - name: Upload APK
-        uses: actions/upload-artifact@v1
-        with:
-          name: app
-          path: android/app/build/outputs/apk/debug/app-debug.apk
+          - name: copia para docs
+            run: cp -r build/* docs/   
+      
+          - name: Commit changes
+            uses: EndBug/add-and-commit@v5
+            with:
+              author_name: icaro duarte
+              author_email: icarodgl@gmail.com
+              message: "auto commit com build do app"
+              add: "*.js"
+            env:
+              GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
