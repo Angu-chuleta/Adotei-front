@@ -1,0 +1,97 @@
+.busca-pet-container {
+  width: 100%;
+  max-width: 1400px;
+  padding: 30px;
+  margin: 32px auto;
+}
+
+.busca-pet-container header {
+  display: flex;
+  align-items: center;
+}
+
+.busca-pet-container header span {
+  font-size: 10px;
+  margin-left: 14px;
+}
+
+.busca-pet-container header img {
+  height: 64px;
+}
+
+.busca-pet-container header a {
+  width: 260px;
+  margin-left: auto;
+  margin-top: 0;
+}
+
+.busca-pet-container header button:hover {
+  border-color: #999;
+}
+
+.busca-pet-container h1 {
+  font-size: 25px;
+  margin-top: 2px;
+  margin-bottom: 24px;
+}
+
+.busca-pet-container ul {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 20px;
+  list-style: none;
+}
+
+.busca-pet-container ul li {
+  padding: 24px;
+  border-radius: 8px;
+  position: relative;
+}
+
+.busca-pet-container ul li button {
+  position: absolute;
+  right: 24px;
+  top: 24px;
+  border: 0;
+}
+.busca-pet-container ul li button:hover {
+  opacity: 80%;
+}
+
+.busca-pet-topo-retangulo-container {
+  width: 92.5%;
+  max-width: 1180px;
+  padding: 2px;
+  margin: 25px auto;
+  position: absolute;
+  height: 110px;
+  left: 25px;
+  justify-content: center;
+  top: 0px;
+  background: rgba(0, 0, 0, 0.7);
+  border-radius: 50px 50px 0px 0px;
+}
+
+.busca-pet-topo-retangulo-container h1 {
+  color: aliceblue;
+  text-align: center;
+}
+.busca-pet-topo-retangulo-container h2 {
+  font-size: 20px;
+  color: aliceblue;
+  text-indent: 10px;
+}
+
+.busca-pet-baixo-retangulo-container {
+  width: 92.5%;
+  max-width: 1180px;
+  padding: 2px;
+  margin: 25px auto;
+  position: absolute;
+  height: 100px;
+  left: 25px;
+  justify-content: center;
+  top: 291px;
+  background: rgba(0, 0, 0, 0.7);
+  border-radius: 0px 0px 50px 50px;
+}

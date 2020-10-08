@@ -1,0 +1,14 @@
+#logo {
+  margin-top: 1px;
+  margin-left: 1px;
+  max-width: 130px;
+  border: 0px;
+  border-radius: 5px 5px 5px 5px;
+}
+nav {
+  background-color: #ececec;
+}
+#menuitem {
+  font-style: italic;
+  color: #30475e;
+}

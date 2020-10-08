@@ -1,0 +1,33 @@
+.box {
+  margin-top: 20px;
+  width: 100%;
+  background: #f0f0f5;
+  box-shadow: 0 0 100px rgba(0, 0, 0, 0, 1);
+  border-radius: 8px;
+  justify-content: center;
+  align-items: center;
+}
+.btn {
+  margin-bottom: 5px;
+}
+#fotoPerfil {
+  width: 200px;
+  height: 200px;
+}
+#saldo {
+  font-size: xx-large;
+
+  width: 200px;
+}
+.perfil {
+  margin-top: 20px;
+  margin-left: 40px;
+  min-width: 300px;
+}
+.dadosPerfil p {
+  font-size: large;
+}
+
+.conta {
+  min-width: 300px;
+}

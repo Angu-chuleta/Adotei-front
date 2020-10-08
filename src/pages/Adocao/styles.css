@@ -1,0 +1,16 @@
+#sobre {
+  color: #f2a365;
+}
+#card {
+  background-color: #222831;
+}
+.card-content {
+  background-color: #e7ecf1;
+}
+.card-action {
+  background-color: #30475e;
+
+}
+.card-title {
+  text-shadow: 1px 1px #f2a365;
+}
