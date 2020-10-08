@@ -16,9 +16,9 @@ afterAll(async () => {
 
 test("checkAdmin", async () => {
   const page = await context.newPage();
-  await page.goto("http://localhost:3000/", { waitUntil: "domcontentloaded" });
+  await page.goto("https://adotei.vercel.app/", { waitUntil: "domcontentloaded" });
   await page.click('[placeholder="Login"]');
-  await page.fill('[placeholder="Login"]', "tadeu");
+  await page.fill('[placeholder="Login"]', "teste");
   await page.press('[placeholder="Login"]', "Tab");
   await page.fill('[placeholder="Senha"]', "123");
   await page.click(".btn");
