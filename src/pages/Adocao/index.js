@@ -8,9 +8,14 @@ export default function Adocao() {
   const [pets, setPets] = useState([]);
 
   useEffect(() => {
-    apiService.get("pet").then((response) => {
+    try {
+          apiService.get("pet").then((response) => {
       setPets(response.data);
     });
+    } catch (error) {
+      
+    }
+
   }, []);
 
   return (

@@ -1,27 +1,14 @@
-.newCase-container {
-  position: absolute;
-  width: 800px;
-  height: 800px;
-  left: 300px;
-  top: 80px;
-  height: 80vh;
-  margin: 0 auto;
-}
-
 h1 {
   text-align: center;
 }
 .newCase-container .content {
-  width: 100%;
-  padding: 96px;
+  margin-top: 50px;
   background: #f0f0f5;
   box-shadow: 0 0 100px rgba(0, 0, 0, 0, 1);
   border-radius: 8px;
-  justify-content: center;
-  align-items: center;
 }
 
-.newCase-container .content section {
+/* .newCase-container .content section {
   width: 100%;
   max-width: 380px;
 }
@@ -42,8 +29,7 @@ h1 {
 }
 
 .newCase-container .content form input {
-  margin-top: 8px;
-}
+  margin-top: 8px; */
 
 textarea {
   width: 100%;

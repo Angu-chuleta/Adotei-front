@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import apiService from "../../services/api";
 import "./styles.css";
-// import ImageUploading from "react-images-uploading";
+import ImageUploading from "react-images-uploading";
 
 export default function RegisterUser() {
   const history = useHistory();
@@ -19,14 +19,16 @@ export default function RegisterUser() {
   //const[city,setCity] = useState('');
   //const[state,setstate] = useState('');
 
-  // const [images, setImages] = React.useState([]);
-  // const maxNumber = 1;
+  const [images, setImages] = React.useState([]);
+  const maxNumber = 1;
 
-  // const onChangeImage = (imageList, addUpdateIndex) => {
-  //   console.log(imageList, addUpdateIndex);
-  //   setImages(imageList);
-  //   setFoto(`${imageList[0].data_url}`);
-  // };
+  const onChangeImage = (imageList, addUpdateIndex) => {
+    console.log(imageList, addUpdateIndex);
+    setImages(imageList);
+    setFoto(`${imageList[0]!== undefined?imageList[0].data_url:''}`);
+  };
+
+
   function validaForm() {
     let filds = [foto, name, email, sobre, telefone, username, password];
     return (filds.filter((e) => e === "").length === 0);
@@ -69,7 +71,7 @@ export default function RegisterUser() {
 
   return (
     <div className="row">
-      <div className="caixaRegistro col s12 m4 offset-m4">
+      <div className="caixaRegistro col s12 m8 offset-m2 l6 offset-l3 xl4 offset-xl4">
         <section className="col s12 sectionbox">
           <div className="col s2">
             <Link className=".back-link" to="/">
@@ -103,14 +105,14 @@ export default function RegisterUser() {
             onChange={(e) => setPassword(e.target.value)}
           />
           {formValido ? <div></div> : <span id="erro">campo obrigatório</span>}
-          <input
+          {/* <input
             type="url"
             placeholder="Coloque o link da imagem aqui!"
             value={foto}
             onChange={(e) => setFoto(e.target.value)}
           />
-          {formValido ? <div></div> : <span id="erro">campo obrigatório</span>}
-          {/* <div className="App">
+          {formValido ? <div></div> : <span id="erro">campo obrigatório</span>} */}
+          <div className="App">
             <ImageUploading
               multiple
               value={images}
@@ -134,7 +136,7 @@ export default function RegisterUser() {
                     onClick={onImageUpload}
                     {...dragProps}
                   >
-                    Click or Drop here
+                    Adicione uma foto
                   </a>
                   &nbsp;
                   {imageList.map((image, index) => (
@@ -159,7 +161,7 @@ export default function RegisterUser() {
                 </div>
               )}
             </ImageUploading>
-          </div> */}
+          </div>
 
           <input
             placeholder="Email"

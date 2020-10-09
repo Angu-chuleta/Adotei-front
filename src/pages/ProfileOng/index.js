@@ -17,8 +17,9 @@ export default function ProfileOng() {
 
   async function hundleDeleteCase(pet) {
     try {
-      await apiService.delete(`pet/${pet._id}`);
-      setPets(pets.filter((pets) => pets._id !== pet._id));
+      apiService.delete(`pet/${pet._id}`).then(res =>{
+              setPets(pets.filter((pets) => pets._id !== pet._id));
+      });
     } catch (err) {
       alert(`Erro ao deletar: ${err}`);
     }
@@ -39,7 +40,7 @@ export default function ProfileOng() {
 
         </div>
 
-        <ul className="box col s12 m10 offset-m1 l6 offset-l3">
+        <ul className="box col s12 m8 offset-m2 l6 offset-l3 xl4 offset-xl4">
           {pets.map((pet) => (
             <li key={pet._id}>
               <div className="card z-depth-2">

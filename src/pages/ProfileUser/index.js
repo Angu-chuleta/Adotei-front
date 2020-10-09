@@ -11,19 +11,21 @@ export default function ProfileUser() {
 
   async function addCredito() {
     try {
-      await apiService.post(`/user/${perfil._id}/addcredit`, { credito: 1 });
-    } catch (error) {
-      
-    }
-    try {
+      apiService.post(`/user/${perfil._id}/addcredit`, { credito: 1 }).then(()=>{
+        try {
           apiService.get(`/user/${perfil._id}/`).then((r) => {
       console.log(r.data);
       setPerfil(r.data);
       localStorage.setItem("adotei@perfil", JSON.stringify(r.data));
     });
     } catch (error) {
-      
+      throw error
     }
+      });
+    } catch (error) {
+      console.log("Erro:", error);
+    }
+ 
 
   }
 
@@ -49,9 +51,9 @@ export default function ProfileUser() {
     <div>
       <Cabecalho />
       <div className="row">
-        <div className="col s12 m6 offset-m3">
+        <div className="col s12 m8 offset-m2 l6 offset-l3 xl4 offset-xl4">
           <div className="row box z-depth-3">
-            <div className="perfil col s6">
+            <div className="perfil col s8">
               <img
                 className="circle responsive-img"
                 id="fotoPerfil"
