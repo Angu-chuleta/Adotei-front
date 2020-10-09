@@ -5,10 +5,23 @@
   border: 0px;
   border-radius: 5px 5px 5px 5px;
 }
+#logomenu {
+  width: 80%;
+  display: flex;
+}
 nav {
   background-color: #ececec;
 }
 #menuitem {
   font-style: italic;
   color: #30475e;
+}
+#sidemenu {
+  /* margin-left: 40%; */
+}
+.btnMenu {
+  align-self: flex-end;
+  background-color: #00304700 !important;
+  border-radius: 0px 0px 0px 0px !important;
+  align-items: flex-end;
 }

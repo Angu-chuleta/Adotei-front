@@ -2,8 +2,7 @@ import React, { useEffect } from "react";
 import logodotei from "../../assets/imagens/logodotei.png";
 import { Link, useHistory } from "react-router-dom";
 import "./styles.css";
-
-//npm install @material-ui/core --save
+import SideMenu from "./sidemenu";
 
 export default function Cabecalho() {
   const [nome, setNome] = React.useState("você!");
@@ -12,9 +11,10 @@ export default function Cabecalho() {
 
   useEffect(() => {
     let saved = JSON.parse(localStorage.getItem("adotei@token"));
-    saved === null ? history.push("/") : setNome(saved.user.name);
-    console.log(saved);
+   if(saved === null ) { history.push("/") }else{
+    setNome(saved.user.name);
     setRole(saved.role);
+   } 
   }, [history]);
 
   function logout() {
@@ -23,8 +23,12 @@ export default function Cabecalho() {
   }
   return (
     <nav>
-      <div className="nav-wrapper">
+      
+      <div className="nav-wrapper col s12">
+        <div id="logomenu">
         <img id="logo" alt="logo" src={logodotei}></img>
+        <SideMenu />
+        </div>
 
         <ul id="nav-mobile" className="right hide-on-med-and-down">
           {role === 2 ? (
@@ -40,7 +44,7 @@ export default function Cabecalho() {
           ) : (
             <div></div>
           )}
-
+          
           <li>
             <Link id="menuitem" to="/adocao">
               Inicio
@@ -52,7 +56,7 @@ export default function Cabecalho() {
             </Link>
           </li>
           <li>
-            <Link id="menuitem" onClick={() => logout()}>
+            <Link id="menuitem" to="/" onClick={() => logout()}>
               sair
             </Link>
           </li>
