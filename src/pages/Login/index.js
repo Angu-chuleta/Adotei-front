@@ -49,7 +49,7 @@ export default function Login() {
 
   return (
     <div className="row">
-      <div className="login-container col s4 offset-s4">
+      <div className="login-container col s12 m4 offset-m4">
         <section className="form col s8 offset-s2">
           <form onSubmit={handleLogin}>
             <h1 id="adotei">Adotei</h1>

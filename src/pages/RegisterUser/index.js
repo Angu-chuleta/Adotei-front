@@ -69,7 +69,7 @@ export default function RegisterUser() {
 
   return (
     <div className="row">
-      <div className="caixaRegistro col s4 offset-s4">
+      <div className="caixaRegistro col s12 m4 offset-m4">
         <section className="col s12 sectionbox">
           <div className="col s2">
             <Link className=".back-link" to="/">
@@ -78,7 +78,7 @@ export default function RegisterUser() {
               </button>
             </Link>
           </div>
-          <div className="col s6 offset-s1">
+          <div className="col s12 m6 offset-m1">
             <h5 id="adotei">Faça cadastro no Adotei e ajude os bichinhos</h5>
           </div>
         </section>
