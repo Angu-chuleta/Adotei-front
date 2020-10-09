@@ -17,7 +17,7 @@ export default function Adocao() {
     <div>
       <Cabecalho />
       <div className="row">
-        <div className="col s12 m6 offset-m3 home-container">
+        <div className="col s12 m8 offset-m2 l6 offset-l3 home-container">
           {pets.map((pet) => (
             <div key={pet._id}  className="card z-depth-3">
               <div className="card-image waves-effect waves-block waves-light">

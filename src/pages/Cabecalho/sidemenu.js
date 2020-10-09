@@ -8,7 +8,6 @@ import { Link ,useHistory} from "react-router-dom";
 export default function SideMenu() {
   const [nome, setNome] = React.useState("você!");
   const [role, setRole] = React.useState(1);
-  const [width, setwidth] = React.useState(window.innerWidth);
   const history = useHistory();
 
 
@@ -17,24 +16,17 @@ export default function SideMenu() {
     if (saved !== null){
       setNome(saved.user.name);
       setRole(saved.role);
-      console.log("role");
     }
-    const updateWidth =  ()=>  {
-      setwidth(window.innerWidth);
-      console.log(width);
-    };
-    window.addEventListener("resize", updateWidth);
-    return () => window.removeEventListener("resize", updateWidth);
-  },[width]);
+
+  },[]);
 
   const logout = () => {
     localStorage.removeItem("adotei@token");
     history.push("/");
   }
 
-  return width <= 600 ? (
-    <div style={{marginLeft:(width-100)+'px' }} >
-
+  return  (
+    <div>
       <style>
         {`
             #root > div > div {
@@ -79,7 +71,5 @@ export default function SideMenu() {
         </SideNavItem>
       </SideNav>
     </div>
-  ) : (
-    <div></div>
-  );
+  ) ;
 }

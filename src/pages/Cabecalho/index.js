@@ -7,6 +7,8 @@ import SideMenu from "./sidemenu";
 export default function Cabecalho() {
   const [nome, setNome] = React.useState("você!");
   const [role, setRole] = React.useState(1);
+  const [width, setwidth] = React.useState(window.innerWidth);
+
   const history = useHistory();
 
   useEffect(() => {
@@ -15,20 +17,25 @@ export default function Cabecalho() {
     setNome(saved.user.name);
     setRole(saved.role);
    } 
-  }, [history]);
+   const updateWidth =  ()=>  {
+    setwidth(window.innerWidth);
+  };
+  window.addEventListener("resize", updateWidth);
+  return () => window.removeEventListener("resize", updateWidth);
+  }, [history,width]);
 
   const logout = () => {
     localStorage.removeItem("adotei@token");
     history.push("/");
   }
-  return (
+  return ( width >= 999?
     <nav>
       
-      <div className="nav-wrapper col s12">
+      <div className="nav-wrapper">
         <div id="logomenu">
         <img id="logo" alt="logo" src={logodotei}></img>
-        <SideMenu />
-        </div>
+
+        
 
         <ul id="nav-mobile" className="right hide-on-med-and-down">
           {role === 2 ? (
@@ -61,7 +68,7 @@ export default function Cabecalho() {
             </Link>
           </li>
         </ul>
-      </div>
-    </nav>
+      </div></div>
+    </nav>:<div style={{marginLeft:(width-65)+'px' }} ><SideMenu /></div>
   );
 }

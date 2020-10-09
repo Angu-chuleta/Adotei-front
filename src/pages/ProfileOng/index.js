@@ -27,17 +27,19 @@ export default function ProfileOng() {
   return (
     <div>
       <Cabecalho />
-      <div className="profileUser-container">
-        <header>
-          <span>Bem vindo, Usuário</span>
+      <div className="row">
+        <div className="col s12">
+          <div className="col s6 m3 l2 offset-l3 offset-m3" >          <span>Bem vindo, Usuário</span>
 
           <Link className="button btn waves-effect waves-light " to="/new">
             Cadastrar novo caso
           </Link>
-        </header>
 
-        <h1>Casos {pets.length} cadastrados</h1>
-        <ul className="box">
+        <h6>Casos {pets.length} cadastrados</h6></div>
+
+        </div>
+
+        <ul className="box col s12 m10 offset-m1 l6 offset-l3">
           {pets.map((pet) => (
             <li key={pet._id}>
               <div className="card z-depth-2">
