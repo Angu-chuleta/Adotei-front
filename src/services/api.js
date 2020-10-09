@@ -1,13 +1,16 @@
 import axios from "axios";
 
+
+const  apiService = ()=>{
 let store;
 localStorage.getItem("adotei@token") ? store = JSON.parse(`${localStorage.getItem("adotei@token")}`) : store = {token:""}
-
-const apiService = axios.create({
+const axiosInstance =  axios.create({
   baseURL: "https://adotei-back.herokuapp.com",
   headers: {
     auth: store.token
   },
 });
+return axiosInstance
+} 
 
-export default apiService;
+export default apiService();

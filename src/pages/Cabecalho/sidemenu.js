@@ -21,7 +21,7 @@ export default function SideMenu() {
   },[]);
 
   const logout = () => {
-    localStorage.removeItem("adotei@token");
+    localStorage.clear()
     history.push("/");
   }
 

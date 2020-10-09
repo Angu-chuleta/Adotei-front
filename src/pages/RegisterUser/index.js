@@ -28,8 +28,8 @@ export default function RegisterUser() {
   //   setFoto(`${imageList[0].data_url}`);
   // };
   function validaForm() {
-    let filds = [foto, email, sobre, telefone, username, password];
-    return !(filds.indexOf((e) => e === "") === -1);
+    let filds = [foto, name, email, sobre, telefone, username, password];
+    return (filds.filter((e) => e === "").length === 0);
   }
 
   async function handleRegister(e) {
@@ -186,8 +186,9 @@ export default function RegisterUser() {
               <div className="indeterminate"></div>
             </div>
           ) : (
-            <button
+            <button 
               className="button btn waves-effect waves-light"
+              
               type="submit"
               name="action"
             >

@@ -23,12 +23,12 @@ export default function Login() {
     setFildErro(false);
     if (username !== "" && password !== "") {
       setload("disabled");
-
       try {
         const response = await apiSevice.post("/auth/login", {
           username,
           password,
         });
+        localStorage.clear()
         localStorage.setItem("adotei@token", JSON.stringify(response.data));
         localStorage.setItem(
           "adotei@perfil",
@@ -37,7 +37,6 @@ export default function Login() {
         history.push("/adocao");
       } catch (err) {
         console.log(err);
-
         alert("Erro ao logar: verifique seu login e senha!", err);
       }
     } else {

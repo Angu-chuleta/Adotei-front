@@ -25,7 +25,7 @@ export default function Cabecalho() {
   }, [history,width]);
 
   const logout = () => {
-    localStorage.removeItem("adotei@token");
+    localStorage.clear()
     history.push("/");
   }
   return ( width >= 999?

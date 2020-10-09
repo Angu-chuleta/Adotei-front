@@ -10,12 +10,21 @@ export default function ProfileUser() {
   const history = useHistory();
 
   async function addCredito() {
-    await apiService.post(`/user/${perfil._id}/addcredit`, { credito: 1 });
-    apiService.get(`/user/${perfil._id}/`).then((r) => {
+    try {
+      await apiService.post(`/user/${perfil._id}/addcredit`, { credito: 1 });
+    } catch (error) {
+      
+    }
+    try {
+          apiService.get(`/user/${perfil._id}/`).then((r) => {
       console.log(r.data);
       setPerfil(r.data);
       localStorage.setItem("adotei@perfil", JSON.stringify(r.data));
     });
+    } catch (error) {
+      
+    }
+
   }
 
   useEffect(() => {
@@ -23,11 +32,16 @@ export default function ProfileUser() {
     if (storage === null) {
       history.push("/");
     } else {
-      apiService.get(`/user/${storage.user._id}/`).then((r) => {
+      try {
+            apiService.get(`/user/${storage.user._id}/`).then((r) => {
         console.log(r.data);
         setPerfil(r.data);
         localStorage.setItem("adotei@perfil", JSON.stringify(r.data));
       });
+      } catch (error) {
+        
+      }
+  
     }
   }, [history]);
 
