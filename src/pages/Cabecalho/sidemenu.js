@@ -1,7 +1,8 @@
 import "materialize-css";
 import { Button, SideNavItem, Icon, SideNav } from "react-materialize";
 import React from "react";
-import logodotei from "../../assets/imagens/logodotei.png";
+import logodotei from "../../assets/imagens/logo.jpg";
+import doteibg from "../../assets/imagens/adoteibg.png";
 import "./styles.css";
 import { Link ,useHistory} from "react-router-dom";
 
@@ -47,10 +48,10 @@ export default function SideMenu() {
       >
         <SideNavItem
           user={{
-            background: "",
-            email: "",
+            background: doteibg,
+            email: "Adote um Pet!",
             image: logodotei,
-            name: "John Doe",
+            name: "Adotei",
           }}
           userView
         />
