@@ -1,25 +1,40 @@
 import "materialize-css";
 import { Button, SideNavItem, Icon, SideNav } from "react-materialize";
-import React, { useEffect } from "react";
+import React from "react";
 import logodotei from "../../assets/imagens/logodotei.png";
 import "./styles.css";
-import { Link, useHistory } from "react-router-dom";
+import { Link ,useHistory} from "react-router-dom";
 
 export default function SideMenu() {
+  const [nome, setNome] = React.useState("você!");
+  const [role, setRole] = React.useState(1);
   const [width, setwidth] = React.useState(window.innerWidth);
+  const history = useHistory();
 
-  const updateWidthAndwidth = () => {
-    setwidth(window.innerWidth);
-    console.log(width);
-  };
-  useEffect(() => {
-    console.log(width);
-    window.addEventListener("resize", updateWidthAndwidth);
-    return () => window.removeEventListener("resize", updateWidthAndwidth);
-  });
+
+  React.useEffect(() => {
+    let saved = JSON.parse(localStorage.getItem("adotei@token"));
+    if (saved !== null){
+      setNome(saved.user.name);
+      setRole(saved.role);
+      console.log("role");
+    }
+    const updateWidth =  ()=>  {
+      setwidth(window.innerWidth);
+      console.log(width);
+    };
+    window.addEventListener("resize", updateWidth);
+    return () => window.removeEventListener("resize", updateWidth);
+  },[width]);
+
+  const logout = () => {
+    localStorage.removeItem("adotei@token");
+    history.push("/");
+  }
 
   return width <= 600 ? (
     <div style={{marginLeft:(width-100)+'px' }} >
+
       <style>
         {`
             #root > div > div {
@@ -47,18 +62,21 @@ export default function SideMenu() {
           }}
           userView
         />
-                          <Link id="menuitem" to="/profileong"><SideNavItem icon={<Icon>assessment</Icon>}>Admin</SideNavItem></Link>
+                {role === 2?                      <SideNavItem  icon={<Icon>assessment</Icon>}><Link id="menuitem" to="/profileong">Admin</Link></SideNavItem>
+:<div></div>}    
 
         
-        <Link id="menuitem" to="/adocao"> <SideNavItem icon={<Icon>favorite</Icon>}>Home</SideNavItem> </Link>
+         <SideNavItem  icon={<Icon>favorite</Icon>}><Link id="menuitem" to="/adocao">Home</Link></SideNavItem> 
        
+
         <SideNavItem divider />
-        
-        <SideNavItem subheader>Menu do usuário</SideNavItem>
-        <Link id="menuitem" to="/profileuser"><SideNavItem icon={<Icon>person</Icon>}>Perfil</SideNavItem></Link>
-        <Link id="menuitem" to="/"><SideNavItem waves icon={<Icon>exit_to_app</Icon>}>
-          logout
-        </SideNavItem></Link>
+        <SideNavItem  subheader>Menu do usuário</SideNavItem>
+
+
+        <SideNavItem  icon={<Icon>person</Icon>}><Link id="menuitem" to="/profileuser">Perfil de {nome}</Link></SideNavItem>
+       <SideNavItem  waves><Icon>exit_to_app</Icon>
+          <a onClick= {()=>{logout()}}   id="menuitem" > logout</a>
+        </SideNavItem>
       </SideNav>
     </div>
   ) : (

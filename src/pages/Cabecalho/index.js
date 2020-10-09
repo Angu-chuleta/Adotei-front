@@ -17,7 +17,7 @@ export default function Cabecalho() {
    } 
   }, [history]);
 
-  function logout() {
+  const logout = () => {
     localStorage.removeItem("adotei@token");
     history.push("/");
   }
