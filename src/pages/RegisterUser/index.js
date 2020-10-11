@@ -16,20 +16,30 @@ export default function RegisterUser() {
 
   const [load, setLoad] = useState(false);
   const [formValido, setformValido] = useState(true);
+
   //const[city,setCity] = useState('');
   //const[state,setstate] = useState('');
 
   const [images, setImages] = React.useState([]);
+  const [imagesvalida, setImagesvalida] = React.useState(true);
   const maxNumber = 1;
 
   const onChangeImage = (imageList, addUpdateIndex) => {
-    console.log(imageList, addUpdateIndex);
-    setImages(imageList);
-    setFoto(`${imageList[0] !== undefined ? imageList[0].data_url : ""}`);
+    if (imageList[0] !== undefined) {
+      console.log(imageList, addUpdateIndex);
+      console.log(imageList[0].file.size / 1024 / 1024, "MB");
+      if (imageList[0].file.size / 1024 / 1024 < 1) {
+        setImagesvalida(true);
+        setImages(imageList);
+        setFoto(`${imageList[0].data_url}`);
+      } else {
+        setImagesvalida(false);
+        console.log(imageList[0].file.size / 1024 / 1024, "maior que 1MB");
+      }
+    }
   };
 
-  async function handleRegister(e) {
-    e.preventDefault();
+  async function SendData() {
     const role = 1;
     const credito = 0;
     setLoad(true);
@@ -77,7 +87,7 @@ export default function RegisterUser() {
             <h5 id="adotei">Faça cadastro no Adotei e ajude os bichinhos</h5>
           </div>
         </section>
-        <form className="col s6 offset-s3" onSubmit={handleRegister}>
+        <form className="col s6 offset-s3">
           <input
             placeholder="Nome completo"
             value={name}
@@ -106,6 +116,12 @@ export default function RegisterUser() {
           />
           {formValido ? <div></div> : <span id="erro">campo obrigatório</span>} */}
           <div className="App">
+            {imagesvalida ? (
+              <span></span>
+            ) : (
+              <span id="erro">Imagem maior que 1MB</span>
+            )}
+
             <ImageUploading
               multiple
               value={images}
@@ -136,12 +152,12 @@ export default function RegisterUser() {
                     <div key={index} className="image-item">
                       <img src={image["data_url"]} alt="" width="100" />
                       <div className="image-item__btn-wrapper">
-                        <button
+                        {/* <button
                           className="waves-effect waves-light btn"
                           onClick={() => onImageUpdate(index)}
                         >
                           Update
-                        </button>
+                        </button> */}
                         <button
                           className="waves-effect waves-light btn"
                           onClick={() => onImageRemove(index)}
@@ -182,6 +198,7 @@ export default function RegisterUser() {
             </div>
           ) : (
             <button
+              onClick={() => SendData()}
               className="button btn waves-effect waves-light"
               type="submit"
               name="action"
