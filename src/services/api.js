@@ -1,16 +1,25 @@
 import axios from "axios";
 
 const apiService = () => {
-  let store;
-  localStorage.getItem("adotei@token") !== null
-    ? (store = JSON.parse(`${localStorage.getItem("adotei@token")}`))
-    : (store = { token: "" });
   const axiosInstance = axios.create({
     baseURL: "https://adotei-back.herokuapp.com",
-    headers: {
-      auth: store.token,
-    },
   });
+  axiosInstance.interceptors.request.use(
+    (config) => {
+      const store = localStorage.getItem("adotei@token");
+      if (store) {
+        let token = JSON.parse(store).token;
+        //console.log(">>>>>", token);
+        //config.headers["Authorization"] = `${store.token}`;
+        config.headers = { auth: token };
+      }
+      // config.headers['Content-Type'] = 'application/json';
+      return config;
+    },
+    (error) => {
+      Promise.reject(error);
+    }
+  );
   return axiosInstance;
 };
 

@@ -17,7 +17,7 @@ export default function ProfileUser() {
         apiService
           .get(`/user/${perfil._id}/`)
           .then((r) => {
-            console.log(r.data);
+            // console.log(r.data);
             setPerfil(r.data);
             localStorage.setItem("adotei@perfil", JSON.stringify(r.data));
           })
@@ -39,7 +39,7 @@ export default function ProfileUser() {
       apiService
         .get(`/user/${storage.user._id}/`)
         .then((r) => {
-          console.log(r.data);
+          // console.log(r.data);
           setPerfil(r.data);
           localStorage.setItem("adotei@perfil", JSON.stringify(r.data));
           setload(false);

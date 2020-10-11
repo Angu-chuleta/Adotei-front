@@ -23,15 +23,15 @@ export default function NewCase() {
   const foiAdotado = false;
   const onChangeImage = (imageList, addUpdateIndex) => {
     if (imageList[0] !== undefined) {
-      console.log(imageList, addUpdateIndex);
-      console.log(imageList[0].file.size / 1024 / 1024, "MB");
+      // console.log(imageList, addUpdateIndex);
+      // console.log(imageList[0].file.size / 1024 / 1024, "MB");
       if (imageList[0].file.size / 1024 / 1024 < 1) {
         setImagesvalida(true);
         setImages(imageList);
         setFoto(`${imageList[0].data_url}`);
       } else {
         setImagesvalida(false);
-        console.log(imageList[0].file.size / 1024 / 1024, "maior que 1MB");
+        // console.log(imageList[0].file.size / 1024 / 1024, "maior que 1MB");
       }
     }
   };
@@ -50,8 +50,6 @@ export default function NewCase() {
         setLoad(false);
       })
       .catch((error) => {
-        console.log("errou a primeira", error);
-
         setLoad(false);
       });
   }, []);
@@ -80,7 +78,7 @@ export default function NewCase() {
     apiService
       .post("pet", data)
       .then((response) => {
-        console.log(`Cadastro realizado com sucesso`, response.data);
+        // console.log(`Cadastro realizado com sucesso`, response.data);
         // history.push("/profileong");
         setLoadbtn(false);
       })

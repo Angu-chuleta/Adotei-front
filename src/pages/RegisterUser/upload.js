@@ -6,7 +6,7 @@ export default function UploadImage() {
   const maxNumber = 1;
 
   const onChangeImage = (imageList, addUpdateIndex) => {
-    console.log(imageList, addUpdateIndex);
+    // console.log(imageList, addUpdateIndex);
     setImages(imageList);
   };
 
