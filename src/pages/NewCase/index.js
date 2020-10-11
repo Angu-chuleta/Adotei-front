@@ -1,34 +1,46 @@
 import React, { useState, useEffect } from "react";
 import "./styles.css";
 import Cabecalho from "../Cabecalho";
-import { useHistory } from "react-router-dom";
+// import { useHistory } from "react-router-dom";
 import apiService from "../../services/api";
 import ImageUploading from "react-images-uploading";
-
 
 export default function NewCase() {
   const [ong, setOng] = useState([]);
   const [ongSelected, setOngSelected] = useState([]);
   const [images, setImages] = React.useState([]);
+  const [load, setLoad] = useState(false);
+  const [loadbtn, setLoadbtn] = useState(false);
   const maxNumber = 1;
   const onChangeImage = (imageList, addUpdateIndex) => {
     console.log(imageList, addUpdateIndex);
     setImages(imageList);
-    setFoto(`${imageList[0]!== undefined?imageList[0].data_url:''}`);
-
-    
+    setFoto(`${imageList[0] !== undefined ? imageList[0].data_url : ""}`);
   };
 
-
   useEffect(() => {
-    try {
-          apiService.get("institution").then((response) => {
-      setOng(response.data);
-    });
-    } catch (error) {
-      
-    }
+    setLoad(true);
 
+    apiService
+      .get("institution")
+      .then((response) => {
+        setOng(response.data);
+        setLoad(false);
+      })
+      .catch((error) => {
+        console.log("errou a primeira", error);
+        setLoadbtn(false);
+        let { token } = localStorage.getItem("adotei@token");
+        apiService(`${token}`)
+          .then((r) => {
+            setOng(r.data);
+            setLoad(false);
+          })
+          .catch((e) => {
+            console.log(e);
+            setLoad(false);
+          });
+      });
   }, []);
 
   function radioChange(e) {
@@ -39,7 +51,7 @@ export default function NewCase() {
     setPorte(e.target.value);
   }
 
-  const history = useHistory();
+  //const history = useHistory();
   const [name, setName] = useState("");
   const [foto, setFoto] = useState("");
   const [idade, setIdade] = useState("");
@@ -59,27 +71,34 @@ export default function NewCase() {
       institution: ongSelected,
     };
 
-    try {
-      console.log(data);
-      const response = await apiService.post("pet", data);
-      console.log(`Cadastro realizado com sucesso`, response.data);
-
-      history.push("/profileong");
-    } catch (err) {
-      console.log("Erro no cadastro tente novamente", err);
-    }
+    console.log(data);
+    setLoadbtn(true);
+    apiService
+      .post("pet", data)
+      .then((response) => {
+        console.log(`Cadastro realizado com sucesso`, response.data);
+        // history.push("/profileong");
+        setLoadbtn(false);
+      })
+      .catch((error) => {
+        console.log("Erro no cadastro tente novamente", error);
+      });
   }
 
   return (
     <div className="row">
       <Cabecalho />
-      <div className="newCase-container ">
-        <div className="content col s12 m8 offset-m2 l6 offset-l3 xl4 offset-xl4">
+      <div>
+        <div className="newcase col s12 m8 offset-m2 l6 offset-l3 xl4 offset-xl4">
           <section>
-            <h1>Nova Adoção</h1>
+            <h4>Novo Animal</h4>
           </section>
-          <form className="col s12 m8 offset-m2 l10 offset-l1" onSubmit={handleNewCase}>
+          <form
+            className="col s12 m8 offset-m2 l10 offset-l1"
+            onSubmit={handleNewCase}
+          >
             <input
+              className="validate"
               placeholder="Nome"
               value={name}
               onChange={(e) => setName(e.target.value)}
@@ -117,12 +136,28 @@ export default function NewCase() {
                 <span>Pequeno</span>
               </label>
             </p>
-            <input
+            {/* <input
+              className="validate"
               placeholder="Idade em meses"
               type="number"
               value={idade}
               onChange={(e) => setIdade(e.target.value)}
-            />
+            /> */}
+
+            <p className="range-field">
+              <label>
+                idade <span id="labelidade">{idade}</span> anos{" "}
+              </label>
+              <input
+                onChange={(e) => setIdade(e.target.value)}
+                value={idade}
+                type="range"
+                id="test5"
+                start="1"
+                min="0"
+                max="30"
+              />
+            </p>
 
             <label htmlFor="msg"></label>
             <textarea
@@ -136,80 +171,90 @@ export default function NewCase() {
               onChange={(e) => setFoto(e.target.value)}
             /> */}
 
-<div className="App">
-            <ImageUploading
-              multiple
-              value={images}
-              onChange={onChangeImage}
-              maxNumber={maxNumber}
-              dataURLKey="data_url"
-            >
-              {({
-                imageList,
-                onImageUpload,
-                onImageUpdate,
-                onImageRemove,
-                isDragging,
-                dragProps,
-              }) => (
-                // write your building UI
-                <div className="upload__image-wrapper">
-                  <a
-                    className="waves-effect waves-light btn"
-                    style={isDragging ? { color: "red" } : undefined}
-                    onClick={onImageUpload}
-                    {...dragProps}
-                  >
-                    Adicione uma foto
-                  </a>
-                  &nbsp;
-                  {imageList.map((image, index) => (
-                    <div key={index} className="image-item">
-                      <img src={image["data_url"]} alt="" width="100" />
-                      <div className="image-item__btn-wrapper">
-                        <button
-                          className="waves-effect waves-light btn"
-                          onClick={() => onImageUpdate(index)}
-                        >
-                          Update
-                        </button>
-                        <button
-                          className="waves-effect waves-light btn"
-                          onClick={() => onImageRemove(index)}
-                        >
-                          Remove
-                        </button>
+            <div className="App">
+              <ImageUploading
+                multiple
+                value={images}
+                onChange={onChangeImage}
+                maxNumber={maxNumber}
+                dataURLKey="data_url"
+              >
+                {({
+                  imageList,
+                  onImageUpload,
+                  onImageUpdate,
+                  onImageRemove,
+                  isDragging,
+                  dragProps,
+                }) => (
+                  // write your building UI
+                  <div className="upload__image-wrapper">
+                    <a
+                      className="waves-effect waves-light btn"
+                      style={isDragging ? { color: "red" } : undefined}
+                      onClick={onImageUpload}
+                      {...dragProps}
+                    >
+                      Adicione uma foto
+                    </a>
+                    &nbsp;
+                    {imageList.map((image, index) => (
+                      <div key={index} className="image-item">
+                        <img src={image["data_url"]} alt="" width="100" />
+                        <div className="image-item__btn-wrapper">
+                          <button
+                            className="waves-effect waves-light btn"
+                            onClick={() => onImageUpdate(index)}
+                          >
+                            Update
+                          </button>
+                          <button
+                            className="waves-effect waves-light btn"
+                            onClick={() => onImageRemove(index)}
+                          >
+                            Remove
+                          </button>
+                        </div>
                       </div>
-                    </div>
-                  ))}
-                </div>
-              )}
-            </ImageUploading>
-          </div>
-
-            <div>
-              {ong.map((o) => (
-                <p key={o._id}>
-                  <label>
-                    <input
-                      
-                      value={o._id}
-                      onChange={radioChange}
-                      name="ong"
-                      type="radio"
-                    />
-                    <span>{o.name}</span>
-                  </label>
-                </p>
-              ))}
+                    ))}
+                  </div>
+                )}
+              </ImageUploading>
             </div>
+            {load ? (
+              <div className="progress">
+                <div className="indeterminate"></div>
+              </div>
+            ) : (
+              <div>
+                {ong.map((o) => (
+                  <p key={o._id}>
+                    <label>
+                      <input
+                        value={o._id}
+                        onChange={radioChange}
+                        name="ong"
+                        type="radio"
+                      />
+                      <span>{o.name}</span>
+                    </label>
+                  </p>
+                ))}
+              </div>
+            )}
 
-            <button
-              className="button btn waves-effect waves-light"
-              type="submit"
-            >
-              Cadastrar
-            </button>
+            {loadbtn ? (
+              <div className="progress">
+                <div className="indeterminate"></div>
+              </div>
+            ) : (
+              <button
+                className="button btn waves-effect waves-light"
+                type="submit"
+              >
+                Cadastrar
+              </button>
+            )}
           </form>
         </div>
       </div>

@@ -8,8 +8,9 @@ export default function Login() {
   const history = useHistory();
   const [username, setLogin] = useState("");
   const [password, setSenha] = useState("");
-  const [load, setload] = useState("");
+  const [load, setload] = useState(false);
   const [FildErro, setFildErro] = useState(false);
+  const [UserPass, setUserPass] = useState(false);
 
   useEffect(() => {
     let store = JSON.parse(localStorage.getItem("adotei@token"));
@@ -20,30 +21,35 @@ export default function Login() {
 
   async function handleLogin(e) {
     e.preventDefault();
+    setUserPass(false);
     setFildErro(false);
-    if (username !== "" && password !== "") {
-      setload("disabled");
-      try {
-        const response = await apiSevice.post("/auth/login", {
+    if (username !== "" || password !== "") {
+      setload(true);
+
+      apiSevice
+        .post("/auth/login", {
           username,
           password,
+        })
+        .then((response) => {
+          localStorage.clear();
+          localStorage.setItem("adotei@token", JSON.stringify(response.data));
+          localStorage.setItem(
+            "adotei@perfil",
+            JSON.stringify(response.data.user)
+          );
+          history.push("/adocao");
+          setload(false);
+        })
+        .catch((err) => {
+          setload(false);
+          console.log(err);
+          setUserPass(true);
+          //alert("Erro ao logar: verifique seu login e senha!");
         });
-        localStorage.clear()
-        localStorage.setItem("adotei@token", JSON.stringify(response.data));
-        localStorage.setItem(
-          "adotei@perfil",
-          JSON.stringify(response.data.user)
-        );
-        history.push("/adocao");
-      } catch (err) {
-        console.log(err);
-        alert("Erro ao logar: verifique seu login e senha!", err);
-      }
     } else {
       setFildErro(true);
     }
-
-    setload("");
   }
 
   return (
@@ -56,6 +62,11 @@ export default function Login() {
             <h3 id="bemvindo">Bem vindo!</h3>
 
             <h5 id="textologin">faça seu login:</h5>
+            {UserPass ? (
+              <span id="erro">Usuário ou Senha incorreto</span>
+            ) : (
+              <p></p>
+            )}
             <input
               placeholder="Login"
               value={username}

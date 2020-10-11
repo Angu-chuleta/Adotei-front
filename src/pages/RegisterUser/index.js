@@ -25,14 +25,8 @@ export default function RegisterUser() {
   const onChangeImage = (imageList, addUpdateIndex) => {
     console.log(imageList, addUpdateIndex);
     setImages(imageList);
-    setFoto(`${imageList[0]!== undefined?imageList[0].data_url:''}`);
+    setFoto(`${imageList[0] !== undefined ? imageList[0].data_url : ""}`);
   };
-
-
-  function validaForm() {
-    let filds = [foto, name, email, sobre, telefone, username, password];
-    return (filds.filter((e) => e === "").length === 0);
-  }
 
   async function handleRegister(e) {
     e.preventDefault();
@@ -52,19 +46,18 @@ export default function RegisterUser() {
         credito,
       },
     };
-    if (validaForm()) {
-      setformValido(true);
-      try {
-        const response = await apiService.post("auth/new", data);
 
+    apiService
+      .post("auth/new", data)
+      .then((response) => {
         console.log("Cadastro realizado com sucesso", response.status);
+        setformValido(true);
         history.push("/");
-      } catch (err) {
+      })
+      .catch((err) => {
+        setformValido(false);
         console.log("Erro no cadastro tente novamente: ", err);
-      }
-    } else {
-      setformValido(false);
-    }
+      });
 
     setLoad(false);
   }
@@ -188,9 +181,8 @@ export default function RegisterUser() {
               <div className="indeterminate"></div>
             </div>
           ) : (
-            <button 
+            <button
               className="button btn waves-effect waves-light"
-              
               type="submit"
               name="action"
             >
