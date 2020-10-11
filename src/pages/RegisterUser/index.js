@@ -13,15 +13,11 @@ export default function RegisterUser() {
   const [telefone, setTelefone] = useState("");
   const [username, setUsename] = useState("");
   const [password, setPassword] = useState("");
-
   const [load, setLoad] = useState(false);
   const [formValido, setformValido] = useState(true);
-
-  //const[city,setCity] = useState('');
-  //const[state,setstate] = useState('');
-
   const [images, setImages] = React.useState([]);
   const [imagesvalida, setImagesvalida] = React.useState(true);
+  const [usernameErro, setUsernameErro] = useState(false);
   const maxNumber = 1;
 
   const onChangeImage = (imageList, addUpdateIndex) => {
@@ -37,6 +33,10 @@ export default function RegisterUser() {
         console.log(imageList[0].file.size / 1024 / 1024, "maior que 1MB");
       }
     }
+  };
+  const onImageRemove = () => {
+    setImages([]);
+    setFoto([]);
   };
 
   async function SendData() {
@@ -56,20 +56,27 @@ export default function RegisterUser() {
         credito,
       },
     };
-
+    setformValido(true);
+    setUsernameErro(false);
     apiService
       .post("auth/new", data)
       .then((response) => {
         console.log("Cadastro realizado com sucesso", response.status);
-        setformValido(true);
         history.push("/");
+        setLoad(false);
       })
       .catch((err) => {
-        setformValido(false);
-        console.log("Erro no cadastro tente novamente: ", err);
+        if (
+          err.response.data.message &&
+          err.response.data.message === "usuário já cadastrado"
+        ) {
+          setUsernameErro(true);
+        } else {
+          setformValido(false);
+        }
+        setLoad(false);
+        console.log("Erro no cadastro tente novamente: ", err.response.data);
       });
-
-    setLoad(false);
   }
 
   return (
@@ -93,21 +100,22 @@ export default function RegisterUser() {
             value={name}
             onChange={(e) => setName(e.target.value)}
           />
-
-          {formValido ? <div></div> : <span id="erro">campo obrigatório</span>}
+          {!usernameErro ? (
+            <div></div>
+          ) : (
+            <span id="erro">Usuário já existe</span>
+          )}
           <input
             placeholder="Nome de usuário"
             value={username}
             onChange={(e) => setUsename(e.target.value)}
           />
-          {formValido ? <div></div> : <span id="erro">campo obrigatório</span>}
           <input
             placeholder="senha"
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
-          {formValido ? <div></div> : <span id="erro">campo obrigatório</span>}
           {/* <input
             type="url"
             placeholder="Coloque o link da imagem aqui!"
@@ -129,14 +137,7 @@ export default function RegisterUser() {
               maxNumber={maxNumber}
               dataURLKey="data_url"
             >
-              {({
-                imageList,
-                onImageUpload,
-                onImageUpdate,
-                onImageRemove,
-                isDragging,
-                dragProps,
-              }) => (
+              {({ imageList, onImageUpload, isDragging, dragProps }) => (
                 // write your building UI
                 <div className="upload__image-wrapper">
                   <a
@@ -178,20 +179,23 @@ export default function RegisterUser() {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
-          {formValido ? <div></div> : <span id="erro">campo obrigatório</span>}
           <input
             placeholder="Telefone"
             value={telefone}
             onChange={(e) => setTelefone(e.target.value)}
           />
-          {formValido ? <div></div> : <span id="erro">campo obrigatório</span>}
           <input
             placeholder="Descrição"
             type="text"
             value={sobre}
             onChange={(e) => setSobre(e.target.value)}
           />
-          {formValido ? <div></div> : <span id="erro">campo obrigatório</span>}
+          {formValido ? (
+            <div></div>
+          ) : (
+            <span id="erro">Preencha todos os campos</span>
+          )}
+
           {load ? (
             <div className="progress">
               <div className="indeterminate"></div>

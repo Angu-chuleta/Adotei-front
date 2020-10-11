@@ -11,11 +11,33 @@ export default function NewCase() {
   const [images, setImages] = React.useState([]);
   const [load, setLoad] = useState(false);
   const [loadbtn, setLoadbtn] = useState(false);
+  const [formErro, setFormErro] = useState(false);
   const maxNumber = 1;
+  const [imagesvalida, setImagesvalida] = React.useState(true);
+  //const history = useHistory();
+  const [name, setName] = useState("");
+  const [foto, setFoto] = useState("");
+  const [idade, setIdade] = useState("");
+  const [sobre, setSobre] = useState("");
+  const [porte, setPorte] = useState("");
+  const foiAdotado = false;
   const onChangeImage = (imageList, addUpdateIndex) => {
-    console.log(imageList, addUpdateIndex);
-    setImages(imageList);
-    setFoto(`${imageList[0] !== undefined ? imageList[0].data_url : ""}`);
+    if (imageList[0] !== undefined) {
+      console.log(imageList, addUpdateIndex);
+      console.log(imageList[0].file.size / 1024 / 1024, "MB");
+      if (imageList[0].file.size / 1024 / 1024 < 1) {
+        setImagesvalida(true);
+        setImages(imageList);
+        setFoto(`${imageList[0].data_url}`);
+      } else {
+        setImagesvalida(false);
+        console.log(imageList[0].file.size / 1024 / 1024, "maior que 1MB");
+      }
+    }
+  };
+  const onImageRemove = () => {
+    setImages([]);
+    setFoto([]);
   };
 
   useEffect(() => {
@@ -29,17 +51,8 @@ export default function NewCase() {
       })
       .catch((error) => {
         console.log("errou a primeira", error);
-        setLoadbtn(false);
-        let { token } = localStorage.getItem("adotei@token");
-        apiService(`${token}`)
-          .then((r) => {
-            setOng(r.data);
-            setLoad(false);
-          })
-          .catch((e) => {
-            console.log(e);
-            setLoad(false);
-          });
+
+        setLoad(false);
       });
   }, []);
 
@@ -51,16 +64,7 @@ export default function NewCase() {
     setPorte(e.target.value);
   }
 
-  //const history = useHistory();
-  const [name, setName] = useState("");
-  const [foto, setFoto] = useState("");
-  const [idade, setIdade] = useState("");
-  const [sobre, setSobre] = useState("");
-  const [porte, setPorte] = useState("");
-  const foiAdotado = false;
-  async function handleNewCase(e) {
-    e.preventDefault();
-
+  async function sendData() {
     const data = {
       name,
       foto,
@@ -70,7 +74,7 @@ export default function NewCase() {
       foiAdotado,
       institution: ongSelected,
     };
-
+    setFormErro(false);
     console.log(data);
     setLoadbtn(true);
     apiService
@@ -81,6 +85,8 @@ export default function NewCase() {
         setLoadbtn(false);
       })
       .catch((error) => {
+        setFormErro(true);
+        setLoadbtn(false);
         console.log("Erro no cadastro tente novamente", error);
       });
   }
@@ -93,10 +99,7 @@ export default function NewCase() {
           <section>
             <h4>Novo Animal</h4>
           </section>
-          <form
-            className="col s12 m8 offset-m2 l10 offset-l1"
-            onSubmit={handleNewCase}
-          >
+          <form className="col s12 m8 offset-m2 l10 offset-l1">
             <input
               className="validate"
               placeholder="Nome"
@@ -170,7 +173,11 @@ export default function NewCase() {
               value={foto}
               onChange={(e) => setFoto(e.target.value)}
             /> */}
-
+            {imagesvalida ? (
+              <span></span>
+            ) : (
+              <span id="erro">Imagem maior que 1MB</span>
+            )}
             <div className="App">
               <ImageUploading
                 multiple
@@ -179,14 +186,7 @@ export default function NewCase() {
                 maxNumber={maxNumber}
                 dataURLKey="data_url"
               >
-                {({
-                  imageList,
-                  onImageUpload,
-                  onImageUpdate,
-                  onImageRemove,
-                  isDragging,
-                  dragProps,
-                }) => (
+                {({ imageList, onImageUpload, isDragging, dragProps }) => (
                   // write your building UI
                   <div className="upload__image-wrapper">
                     <a
@@ -204,13 +204,7 @@ export default function NewCase() {
                         <div className="image-item__btn-wrapper">
                           <button
                             className="waves-effect waves-light btn"
-                            onClick={() => onImageUpdate(index)}
-                          >
-                            Update
-                          </button>
-                          <button
-                            className="waves-effect waves-light btn"
-                            onClick={() => onImageRemove(index)}
+                            onClick={() => onImageRemove()}
                           >
                             Remove
                           </button>
@@ -242,13 +236,18 @@ export default function NewCase() {
                 ))}
               </div>
             )}
-
+            {!formErro ? (
+              <span></span>
+            ) : (
+              <span id="erro">Preencha todos os campos</span>
+            )}
             {loadbtn ? (
               <div className="progress">
                 <div className="indeterminate"></div>
               </div>
             ) : (
               <button
+                onClick={() => sendData()}
                 className="button btn waves-effect waves-light"
                 type="submit"
               >
