@@ -67,20 +67,21 @@ export default function Login() {
             ) : (
               <p></p>
             )}
-            <input
-              placeholder="Login"
-              value={username}
-              onChange={(e) => setLogin(e.target.value)}
-            ></input>
-            {FildErro ? <span id="erro">campo obrigatório</span> : null}
 
-            <input
-              placeholder="Senha"
-              type="password"
-              value={password}
-              onChange={(e) => setSenha(e.target.value)}
-            ></input>
-            {FildErro ? <span id="erro">campo obrigatório</span> : null}
+            <div class="input-field col s12">
+              <input id="login" type="text" class="validate" value={username} onChange={(e) => setLogin(e.target.value)}></input>
+              <label for="login">Login</label>
+              {FildErro ? <span id="erro">campo obrigatório</span> : null}
+            </div>
+
+
+            <div class="input-field col s12">
+              <input id="password" type="password" class="validate" value={password}
+              onChange={(e) => setSenha(e.target.value)}></input>
+              <label for="password">Senha</label>
+              {FildErro ? <span id="erro">campo obrigatório</span> : null}
+            </div>
+
             {!load ? (
               <button
                 className={"button btn waves-effect waves-light"}
