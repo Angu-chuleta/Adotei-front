@@ -61,7 +61,7 @@ export default function Login() {
 
             <h3 id="bemvindo">Bem vindo!</h3>
 
-            <h5 id="textologin">faça seu login:</h5>
+            <h5 id="textologin">Faça seu login:</h5>
             {UserPass ? (
               <span id="erro">Usuário ou Senha incorreto</span>
             ) : (
@@ -94,6 +94,8 @@ export default function Login() {
                 <div className="indeterminate"></div>
               </div>
             )}
+
+            <br />
 
             <Link className="row" to="/registeruser">
               {/* <Link className="fa fa-facebook" to="/adocao"></Link>

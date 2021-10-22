@@ -18,7 +18,7 @@ form input {
 }
 #bemvindo {
   font-family: "Tahoma";
-
+  text-align: center;
   color: #3b5998;
 }
 #textologin {
@@ -30,6 +30,7 @@ form input {
   align-self: center;
   font-size: large;
   color: #3b5998;
+  
 }
 /* Style all font awesome icons */
 .fa {
@@ -58,4 +59,9 @@ form input {
 .fa-google {
   background: #dd4b39;
   color: white;
+}
+
+
+.row{
+  text-align: center;
 }
